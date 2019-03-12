@@ -17,6 +17,7 @@ class Catalog extends Component {
           </li>
         </ul>
       </div>
+      
     );
   }
 }

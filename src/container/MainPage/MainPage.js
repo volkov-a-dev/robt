@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Aux from '../../hoc/Aux/Aux';
+// import Aux from '../../hoc/Aux/Aux';
 import BundleNews from '../../components/BundleNews/BundleNews';
 import Title from '../../components/UI/Title/Title';
 class MainPage extends Component {

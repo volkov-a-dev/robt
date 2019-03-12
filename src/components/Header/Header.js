@@ -14,6 +14,10 @@ const header = props => {
     {
       "link" : "/catalog",
       "name" : "Catalog"
+    },
+    {
+      "link" : "/blog",
+      "name" : "Blog"
     }
   ];
 

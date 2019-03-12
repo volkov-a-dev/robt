@@ -1,6 +1,6 @@
 
 import React from 'react';
-import classes from './Title.module.scss';
+// import classes from './Title.module.scss';
 import Aux from '../../../hoc/Aux/Aux';
 
 const title = props => {

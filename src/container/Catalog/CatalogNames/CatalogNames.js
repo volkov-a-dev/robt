@@ -11,6 +11,7 @@ class CatalogNames extends Component {
           <div>left colume</div>
           <div>right colume</div>
         </div>
+        
       </div>
     )
   }

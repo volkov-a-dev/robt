@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 
 const news = require('./api/news');
 
+const categoryPhone = require('./api/categoryPhones');
+
 const app = express();
 
 let nextId = 4;
@@ -68,6 +70,11 @@ app.delete('/api/news/:id', (req, res) => {
     res.sendStatus(204);
 });
 
+
+app.get('/api/category-phone', (req, res) => {
+    res.send(categoryPhone);
+});
+
 app.get('*', (req, res) => {
     fs.readFile(`${__dirname}/public/index.html`, (error, html) => {
         if (error) throw error;
@@ -76,5 +83,7 @@ app.get('*', (req, res) => {
         res.end(html);
     });
 });
+
+
 
 app.listen(app.get('port'), () => console.log(`Server is listening: http://localhost:${app.get('port')}`));
