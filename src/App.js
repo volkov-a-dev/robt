@@ -1,28 +1,35 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { Switch, Route, withRouter } from 'react-router-dom';
+
+import MainPage from './container/MainPage/MainPage';
+import Catalog from './container/Catalog/Catalog';
+import CatalogNames from './container/Catalog/CatalogNames/CatalogNames';
+import Product from './container/Catalog/CatalogNames/Product/Product';
+
+import Aux from './hoc/Aux/Aux';
+
+import Layout from './hoc/Layout/Layout';
+// import './App.css';
 
 class App extends Component {
   render() {
+    let router = (
+      <Switch>
+        <Route path="/" exact component={MainPage} />
+        <Route path="/catalog" exact component={Catalog} />
+        <Route path="/catalog/:name" exact component={CatalogNames} />
+        <Route path="/catalog/:name/:element" exact component={Product} />
+        <Route path="/blog" exact component={MainBlog} />
+        <Route path="/blog/:category" exact component={MainCategory} />
+      </Switch>
+    );
+
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Aux>
+        <Layout>{router}</Layout>
+      </Aux>
     );
   }
 }
 
-export default App;
+export default withRouter(App);

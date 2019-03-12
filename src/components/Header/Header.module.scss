@@ -1,0 +1,40 @@
+.MainHeader {
+
+  
+  &Wrapper {
+    // display: flex;
+    // align-items: center;
+    background-color: #f4f4f4;
+    padding: 0 40px;
+
+  }
+  &Action {
+    background-image: linear-gradient(to bottom, #fff, #fff 30%, #f3f3f3);
+    border-bottom: 1px solid #ccc;
+  }
+
+  &Container,
+  &ActionContainer {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+}
+
+.MainNavigation {
+  display: flex;
+}
+.MainHeaderAction {
+  display: flex;
+}
+
+.Header {
+  &Logo {
+    flex: 1 0 auto;
+  }
+  &Search {
+    flex: 3 0 auto;
+  }
+}

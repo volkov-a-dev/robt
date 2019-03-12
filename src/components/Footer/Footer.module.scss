@@ -1,0 +1,45 @@
+.footer {
+  flex: 0 0 auto;
+  background-color: #3e4753;
+  min-height: 80px;
+  padding: 0 40px;
+
+  &__wrap {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  &__row {
+    display: flex;
+    flex-wrap: wrap;
+    &_m {
+      &-l {
+        margin: 0 0 0 auto;
+      }
+    }
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    list-style-type: none;
+  }
+
+  &-nav {
+    &__link {
+      color: #fff;
+      margin: 0 14px 10px 0;
+    }
+  }
+  
+  &-copy {
+    font-size: 13px;
+    color: #6b737f;
+  }
+}
