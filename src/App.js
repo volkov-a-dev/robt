@@ -21,13 +21,11 @@ class App extends Component {
       <Aux >
         <Switch>
           <Route path="/" exact component={MainPage} />
-      
           <Route path="/blog"  component={MainBlog} />
           <Route path="/blog/:category"  component={MainCategory} />
           <Route path="/blog/:category/:post"  component={Post} />
-        
           <Route path="/catalog" exact component={Catalog} />
-          <Route path="/catalog/:name"  component={CatalogNames} />
+          <Route path="/catalog/:name" exact component={CatalogNames} />
           <Route path="/catalog/:name/:element"  component={Product} />
         </Switch>
       </Aux>

@@ -1,0 +1,3 @@
+export {
+    fetchInitAllNews
+} from './news'

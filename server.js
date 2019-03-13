@@ -8,6 +8,7 @@ const bodyParser = require('body-parser');
 const news = require('./api/news');
 
 const categoryPhone = require('./api/categoryPhones');
+const fastNavigation = require('./api/catalogFastNav');
 
 const app = express();
 
@@ -21,6 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 app.use((req, res, next) => {
     res.setHeader('Cache-Control', 'no-cache');
+    res.header("Access-Control-Allow-Origin", "*");
+    res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
     next();
 });
 
@@ -74,6 +77,12 @@ app.delete('/api/news/:id', (req, res) => {
 app.get('/api/category-phone', (req, res) => {
     res.send(categoryPhone);
 });
+
+app.get('/api/catalog-fast-nav', (req, res) => {
+    res.send(fastNavigation);
+});
+
+
 
 app.get('*', (req, res) => {
     fs.readFile(`${__dirname}/public/index.html`, (error, html) => {

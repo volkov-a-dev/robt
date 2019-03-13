@@ -18,7 +18,21 @@ const header = props => {
     {
       "link" : "/blog",
       "name" : "Blog"
+    },
+
+    {
+      "link" : "/blog",
+      "name" : "Houses and apartments"
+    },
+    {
+      "link": "/forum",
+      "name": "Forum"
+    },
+    {
+      "link": "care",
+      "name": "Motor car"
     }
+    
   ];
 
   return (
