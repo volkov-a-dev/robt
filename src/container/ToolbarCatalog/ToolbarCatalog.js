@@ -1,32 +1,31 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../../axios-path-config';
+import { axiosMain } from '../../axios-path-config';
 
+import classes from './ToolbarCatalog.module.scss';
 class ToolbarCatalog extends Component {
     state = {
-        nav: [ ]
+        nav: []
     };
 
     componentDidMount() {
-        axios.get('/catalog-fast-nav')
+        axiosMain.get('/catalog-fast-nav')
             .then(response => {
-               
-                // const navArray = nav: response.data;
                 this.setState({nav: response.data})
-               
             })
             .catch(error => {
                 console.log(error)
                 this.setState({error: true})
             });   
     }
+
     render() {
         let navElements;
         if (this.state.nav) {
-            navElements = this.state.nav.map(nav => {
+            navElements = this.state.nav.map((nav, index) => {
                 return (
-                    <li claclassNamess="project-navigation__item project-navigation__item_secondary">
-                        <Link to={nav.link}>
+                    <li className={classes["project-navigation__item"]} key={index}>
+                        <Link to={nav.link} className={classes["project-navigation__item-link"]}>
                             <span className="project-navigation__text">
                                 <span className="project-navigation__sign">{nav.name}</span>
                             </span>
@@ -37,8 +36,8 @@ class ToolbarCatalog extends Component {
         }
 
         return (
-            <div className="project-navigation project-navigation_overflow project-navigation_scroll">
-                <div className="project-navigation__flex">
+            <div className={classes["project-navigation"]}>
+                <div  className={classes["project-navigation__flex"]}>
                     <div className="project-navigation__part project-navigation__part_1">
                         <ul className="project-navigation__list project-navigation__list_secondary">
                             {navElements}
@@ -49,7 +48,6 @@ class ToolbarCatalog extends Component {
             </div>
         )
     }
-  
 }
 
 export default ToolbarCatalog;

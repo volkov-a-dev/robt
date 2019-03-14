@@ -1,6 +1,6 @@
 import React from 'react';
 import classes from './NavigationWidget.module.scss';
-import ExchangeRates from '../../Widgets/ExchangeRates/ExchangeRates';
+import ExchangeRates from '../../../container/Widgets/ExchangeRates/ExchangeRates';
 import Weather from '../../Widgets/Weather/Weather';
 import Quantity from '../../Cart/Quantity/Quantity';
 import Aux from '../../../hoc/Aux/Aux';
@@ -10,7 +10,7 @@ const navigationWidget = props => {
         <Aux >
             <ul className={classes['nav-top-widgets']}>
                 <li className={classes['nav-top-widgets__element']}>
-                    <ExchangeRates />
+                    <ExchangeRates type="number"  currency="usd"/>
                 </li>
                 <li className={classes['nav-top-widgets__element']}>
                     <Weather />

@@ -1,7 +1,9 @@
 import axios from 'axios';
 
-const instance = axios.create({
-    baseURL: 'http://localhost:8080/api/'
+export const axiosMain = axios.create({
+    baseURL: 'http://localhost:8080/api/',
 })
 
-export default instance;
+export const nbrdAPi = axios.create({
+    baseURL: 'http://www.nbrb.by/API/',
+})

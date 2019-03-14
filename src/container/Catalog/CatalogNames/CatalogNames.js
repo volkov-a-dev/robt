@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
-import axios from '../../../axios-path-config';
+import { axiosMain } from '../../../axios-path-config';
 import classes from './CatalogNames.module.scss';
+import FilterCatalog from './FilterCatalog/FilterCatalog';
 
 import ProductPreView from '../CatalogNames/Product/ProductPreView/ProductPreView';
 class CatalogNames extends Component {
@@ -10,7 +11,7 @@ class CatalogNames extends Component {
   }
 
   componentDidMount() {
-    axios.get('/category-phone')
+    axiosMain.get('/category-phone')
         .then(response => {
             console.info('/category-phone', response.data)
             
@@ -43,9 +44,7 @@ class CatalogNames extends Component {
 
         <div className={classes["shema-grid"]}>
           <div className={classes["shema-grid__left-column"]}>wrap 1
-            <div className={classes["shema-filter"]}>filter wrap
-              <div className={classes["shema-filter__field"]}></div>
-            </div>
+            <FilterCatalog />
           </div>
           <div className={classes["shema-grid__center-column"]}>
             <div className={classes["schema-products"]}>
@@ -53,6 +52,7 @@ class CatalogNames extends Component {
             </div>
           </div>
         </div>
+      
       </div>
     )
   }

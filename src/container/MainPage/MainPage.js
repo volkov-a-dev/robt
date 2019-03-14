@@ -7,6 +7,7 @@ import { connect } from 'react-redux';
 import BundleNews from '../../components/BundleNews/BundleNews';
 import TitleLink from '../../components/UI/Title/TitleLink/TitleLink';
 import ToolbarCatalog from '../../container/ToolbarCatalog/ToolbarCatalog';
+
 class MainPage extends Component {
 
   componentDidMount () {

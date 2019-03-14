@@ -1,5 +1,5 @@
 import * as actionTypes from './actionTypes';
-import axios from '../../axios-path-config';
+import { axiosMain } from '../../axios-path-config';
 
 export const fetchAllNewsStart = () => {
     return {
@@ -24,7 +24,7 @@ export const fetchAllNewsFail = error => {
 export const fetchInitAllNews = () => {
     return dispatch => {
         dispatch(fetchAllNewsStart());
-        axios.get('/news')
+        axiosMain.get('/news')
             .then(res => {
                 dispatch(fetchAllNewsSuccess(res.data))
             })

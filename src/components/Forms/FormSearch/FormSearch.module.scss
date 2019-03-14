@@ -1,0 +1,35 @@
+.fast-search {
+    max-width: 800px;
+
+    &__input {
+        background-repeat: no-repeat;
+        background-size: 18px 18px;
+        background-position: 12px 50%;
+        border: solid 1px #ccc;
+        border-radius: 3px;
+        box-sizing: border-box;
+        outline: 0;
+        padding: 0 10px 0 44px;
+        width: 100%;
+        height: 40px;
+        font-size: 14px;
+        transition: border .1s linear;
+        position: relative;
+        z-index: 1;
+    }
+
+    &__submit {
+        display: none;
+        background: #e6e6e6;
+        border: 0;
+        cursor: pointer;
+        line-height: 36px;
+        padding: 0;
+        width: 86px;
+        text-align: center;
+        position: absolute;
+        top: 2px;
+        right: 2px;
+        z-index: 2;
+    }
+}

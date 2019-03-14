@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import { Route } from 'react-router-dom';
+
 
 class Catalog extends Component {
   render() {
@@ -17,6 +19,7 @@ class Catalog extends Component {
             <span>Компьютеры и сети </span>
           </li>
         </ul>
+      
       </div>
       
     );
