@@ -1,7 +1,8 @@
 import React from "react";
 import classes from "./ProductPreView.module.scss";
+import СompareAction from '../../../Сompare/СompareAction/СompareAction';
+
 const productPreView = props => {
-    console.warn("props===>", props);
     let img;
 
     if (props.images) {
@@ -15,19 +16,20 @@ const productPreView = props => {
         </div>
         );
     }
+
     return (
         <div className={classes["schema-product"]}>
         <div className={classes["schema-product__comparison"]}>
-            <input type="checkbox" id="schpcom_1" />
-            <label htmlFor="schpcom_1" />
+            <СompareAction id={props.id} />
         </div>
         <div className={classes["schema-product__info"]}>
             <div className={classes["schema-product__info-left"]}>{img}</div>
             <div className={classes["schema-product__info-rigth"]}>
             <div className={classes["schema-product__title"]}>
-                <a href="/" className={classes["schema-product__link"]}>
-                <span>{props.name}</span>
-                </a>
+                {/* <Link to={{
+                    pathname: props.match.url + props["html_url"],
+                    state: { id: props.id }
+                }} className={classes["schema-product__link"]}>{props.name}</Link> */}
             </div>
             <div className={classes["schema-product__description"]}>
                 <span>{props.description}</span>

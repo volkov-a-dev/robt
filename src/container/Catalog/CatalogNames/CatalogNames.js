@@ -13,15 +13,10 @@ class CatalogNames extends Component {
   componentDidMount() {
     axiosMain.get('/category-phone')
         .then(response => {
-            console.info('/category-phone', response.data)
-            
-            // const navArray = nav: response.data;
             this.setState({products: response.data.products})
-            // console.info('response===', typeof this.state.nav, this.state.nav)
         })
         .catch(error => {
             console.log(error)
-            // this.setState({error: true})
         });   
   }
 
@@ -30,16 +25,11 @@ class CatalogNames extends Component {
 
     if (this.state.products) {
       product = this.state.products.map(product => {
-        console.log(product)
-        return <ProductPreView {...product} key={product.id}/>
+        return <ProductPreView key={product.id} {...this.props} {...product} />
       })
-        
-      
     }
     return (
       <div>
-      <Link to="/catalog/product/phone">Phone</Link>
-
         <h1>Мобильные телефоны</h1>
 
         <div className={classes["shema-grid"]}>

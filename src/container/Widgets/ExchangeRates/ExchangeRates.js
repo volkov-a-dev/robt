@@ -22,16 +22,15 @@ class exchangeRates extends Component {
         .catch(error => {
             console.log(error)
         });   
-    }
+    };
 
     componentDidMount() {
         if (this.props.currency === "usd") {
-            this.singleCurrencyHandler()
+            this.singleCurrencyHandler();
         }
-    }
+    };
 
     render() {
-        console.log(this.props)
         let rates;
         if (this.state.exRates) {
             rates = Number.parseFloat(this.state.exRates["Cur_OfficialRate"]).toFixed(2);
@@ -39,8 +38,7 @@ class exchangeRates extends Component {
         return (
             <span>{this.state.loading ? '$' + rates : null }</span>
         )
-    }
-    
-}
+    };
+};
 
 export default exchangeRates;

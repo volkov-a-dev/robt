@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 
 import BundleNews from '../../components/BundleNews/BundleNews';
 import TitleLink from '../../components/UI/Title/TitleLink/TitleLink';
-import ToolbarCatalog from '../../container/ToolbarCatalog/ToolbarCatalog';
+import FastNavCatalog from '../../container/FastNavCatalog/FastNavCatalog';
 
 class MainPage extends Component {
 
@@ -17,7 +17,7 @@ class MainPage extends Component {
   render() {
     return (
       <div className="NainWap">
-        <ToolbarCatalog />
+        <FastNavCatalog type="line"/>
         <BundleNews type="all-post" news={this.props.news} step="8"/>
         <TitleLink>People</TitleLink>
         <BundleNews type="all-post" news={this.props.news} step="3"/>

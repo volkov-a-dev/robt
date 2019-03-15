@@ -82,6 +82,24 @@ app.get('/api/catalog-fast-nav', (req, res) => {
     res.send(fastNavigation);
 });
 
+app.get('/api/product/:id', (req, res) => {
+    
+    const id = parseInt(req.params.id, 10);   
+
+    categoryPhone.products.map((product) => {
+        if (product.id === id ) {
+            return res.status(200).send({
+                success: 'true',
+                product,
+            });        
+        }
+    })
+    return res.status(404).send({
+        tets: req.params,  
+        success: 'false',
+        message: 'product does not exist',
+    });
+});
 
 
 app.get('*', (req, res) => {

@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { axiosMain } from '../../axios-path-config';
 
-import classes from './ToolbarCatalog.module.scss';
-class ToolbarCatalog extends Component {
+import classes from './FastNavCatalog.module.scss';
+class FastNavCatalog extends Component {
     state = {
         nav: []
     };
@@ -22,17 +22,19 @@ class ToolbarCatalog extends Component {
     render() {
         let navElements;
         if (this.state.nav) {
-            navElements = this.state.nav.map((nav, index) => {
-                return (
-                    <li className={classes["project-navigation__item"]} key={index}>
-                        <Link to={nav.link} className={classes["project-navigation__item-link"]}>
-                            <span className="project-navigation__text">
-                                <span className="project-navigation__sign">{nav.name}</span>
-                            </span>
-                        </Link>
-                    </li>
-                )
-            })
+            if (this.props.type === "line") {
+                navElements = this.state.nav.map((nav, index) => {
+                    return (
+                        <li className={classes["project-navigation__item"]} key={index}>
+                            <Link to={nav.link} className={classes["project-navigation__item-link"]}>
+                                <span className="project-navigation__text">
+                                    <span className="project-navigation__sign">{nav.name}</span>
+                                </span>
+                            </Link>
+                        </li>
+                    )
+                })
+            }
         }
 
         return (
@@ -50,4 +52,4 @@ class ToolbarCatalog extends Component {
     }
 }
 
-export default ToolbarCatalog;
+export default FastNavCatalog;

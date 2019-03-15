@@ -1,3 +1,3 @@
 export {
     fetchInitAllNews
-} from './news'
+} from './news';

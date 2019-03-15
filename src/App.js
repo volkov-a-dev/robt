@@ -6,6 +6,7 @@ import Catalog from './container/Catalog/Catalog';
 import CatalogNames from './container/Catalog/CatalogNames/CatalogNames';
 import Product from './container/Catalog/CatalogNames/Product/Product';
 
+import Сompare from './container/Catalog/Сompare/Сompare';
 import MainBlog from './container/Blog/Blog';
 import MainCategory from './container/Blog/Category/Category';
 import Post from './container/Blog/Post/Post';
@@ -25,7 +26,14 @@ class App extends Component {
           <Route path="/blog/:category"  component={MainCategory} />
           <Route path="/blog/:category/:post"  component={Post} />
           <Route path="/catalog" exact component={Catalog} />
-          <Route path="/catalog/:name" exact component={CatalogNames} />
+          <Route path="/catalog/:name" exact 
+            render={props =>
+              <div>
+                <CatalogNames />
+                <Сompare />
+              </div>
+            }
+            />
           <Route path="/catalog/:name/:element"  component={Product} />
         </Switch>
       </Aux>
