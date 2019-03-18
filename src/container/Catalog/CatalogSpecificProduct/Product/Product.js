@@ -7,15 +7,15 @@ class Product extends Component {
   }
   
   componentDidMount() {
-    let idProduct = this.props.location.state.id;
 
+    let idProduct = window.location.hash.replace('#', '');
     axiosMain.get('/product/' + idProduct)
-    .then(response => {
-        this.setState({product: response.data.product})
-    })
-    .catch(error => {
-        console.log(error)
-    });   
+      .then(response => {
+          this.setState({product: response.data.product})
+      })
+      .catch(error => {
+          console.log(error)
+      });   
   }
 
   
@@ -52,9 +52,9 @@ class Product extends Component {
             <div className="offers-description">
               <figure className="offers-description__figure">
                 <div className="offers-description__preview">
-                  <img alt="10 Lite 3GB/32GB HRX-LX1 (небесный голубой)" id="device-header-image" 
-                    className="offers-description__image" src="https://content2.onliner.by/catalog/device/header/e7e1da5eaf9639afec906a9999b66761.jpeg" 
-                    title="Honor 10 Lite 3GB/32GB HRX-LX1 (небесный голубой)" />
+                  {/* <img alt="10 Lite 3GB/32GB HRX-LX1 (небесный голубой)" id="device-header-image" 
+                    className="offers-description__image" src={this.state.product} 
+                    title="Honor 10 Lite 3GB/32GB HRX-LX1 (небесный голубой)" /> */}
                 </div>
               </figure>
             </div>`

@@ -1,73 +1,107 @@
-import React, { Component } from 'react';
+import React, { Component, Suspense } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
-import Aux from './hoc/Aux/Aux';
 import Layout from './hoc/Layout/Layout';
 import asyncComponent from './hoc/asyncComponent/asyncComponent';
 
 import CatalogSpecificProduct from './container/Catalog/CatalogSpecificProduct/CatalogSpecificProduct';
-import Сompare from './container/Catalog/Сompare/Сompare';
+import Compare from './container/Catalog/Сompare/Сompare';
 
-import { library } from '@fortawesome/fontawesome-svg-core'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faIgloo } from '@fortawesome/free-solid-svg-icons'
 
-library.add(faIgloo)
 
-const asyncMainPage = asyncComponent(() => {
-  return import('./container/MainPage/MainPage');
-});
-const asyncCatalog = asyncComponent(() => {
-  return import('./container/Catalog/Catalog');
-});
-const asyncMainBlog = asyncComponent(() => {
-  return import('./container/Blog/Blog');
-});
-const asyncProduct = asyncComponent(() => {
-  return import('./container/Catalog/CatalogSpecificProduct/Product/Product');
-});
-const asyncCompareTable = asyncComponent(() => {
-  return import('./container/Catalog/Сompare/CompareTable/CompareTable');
-});
-const asyncPost = asyncComponent(() => {
-  return import('./container/Blog/Post/Post');
-});
-const asyncMainCategory = asyncComponent(() => {
-  return import('./container/Blog/Category/Category');
-});
+// const asyncCatalog = asyncComponent(() => {
+//   return import('./container/Catalog/Catalog');
+// });
+
 // import './App.css';
+
+const MainPage = React.lazy(() => import('./container/MainPage/MainPage'));
+const MainBlog = React.lazy(() => import('./container/Blog/Blog'));
+const Catalog = React.lazy(() => import('./container/Catalog/Catalog'));
+const MainCategory = React.lazy(() =>  import('./container/Blog/Category/Category'));
+const Post = React.lazy(() => import('./container/Blog/Post/Post'));
+
+const Product = asyncComponent(() => import('./container/Catalog/CatalogSpecificProduct/Product/Product'));
+const CompareTable = asyncComponent(() => import('./container/Catalog/Сompare/CompareTable/CompareTable'));
 
 
 class App extends Component {
   render() {
     let router = (
-      <Aux >
+      <>
         <Switch>
-          <Route path="/" exact component={asyncMainPage} />
-          <Route path="/blog"  component={asyncMainBlog} />
-          <Route path="/blog/:category"  component={asyncMainCategory} />
-          <Route path="/blog/:category/:post"  component={asyncPost} />
-          <Route path="/catalog" exact component={asyncCatalog} />
+          <Route 
+            path="/" 
+            exact 
+            render={() => (
+              <Suspense fallback={null}>
+                <MainPage />
+              </Suspense>
+            )}/>
+          <Route 
+            path="/blog"
+            exact
+            render={() => (
+              <Suspense fallback={null}>
+                <MainBlog />
+              </Suspense>
+          )}/>
+          <Route 
+            path="/blog/:category"
+            render={() => (
+              <Suspense fallback={null}>
+                <MainCategory/>
+              </Suspense>
+          )}/>
+          <Route 
+            path="/blog/:category/:post"
+            render={() => (
+              <Suspense fallback={null}>
+                <Post />
+              </Suspense>
+          )} />
+
+          <Route 
+            path="/catalog" 
+            exact
+            render={() => (
+              <Suspense fallback={null}>
+                <Catalog/>
+              </Suspense>
+            )} />
           
           <Route path="/catalog/:name" exact 
-            render={props =>
+            render={() =>
               <div>
                 <CatalogSpecificProduct />
-                <Сompare />
+                <Compare />
               </div>
             }
             />
           
-          <Route path="/catalog/:name/:element"  component={asyncProduct} />
-          <Route path="/compare" component={asyncCompareTable} />
+          <Route 
+            path="/catalog/:name/:element"
+            render={() => (
+              <Suspense fallback={null}>
+                <Product />
+              </Suspense>
+            )}/>
+
+          <Route 
+            path="/compare" 
+            render={() => (
+              <Suspense fallback={null}>
+                <CompareTable/>
+              </Suspense>
+            )}/>
         </Switch>
-      </Aux>
+      </>
     );
 
     return (
-      <Aux>
+      <>
         <Layout>{router}</Layout>
-      </Aux>
+      </>
     );
   }
 }

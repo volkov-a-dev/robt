@@ -3,6 +3,10 @@ import { Link } from 'react-router-dom';
 // import { Route } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import FastNavCatalog from '../../container/FastNavCatalog/FastNavCatalog';
+import { library } from '@fortawesome/fontawesome-svg-core'
+import { faIgloo } from '@fortawesome/free-solid-svg-icons'
+
+library.add(faIgloo)
 
 class Catalog extends Component {
   state = {

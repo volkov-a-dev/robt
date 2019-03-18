@@ -30,7 +30,8 @@ let bundleNews = (props) => {
                                     />
                                 )
                             }
-
+                            
+                            return null;
                         })
                     }
                 </div>

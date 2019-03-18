@@ -13,7 +13,7 @@ class CompareTable extends Component {
 
                 let compareProducts = data.filter(i => {
                     return compareItems.some((dataId) => {
-                        return i.id == dataId;
+                        return i.id.toString() === dataId;
                     })
                 })
 

@@ -10,7 +10,7 @@ class CompareAction extends Component {
 
         let compareItems = localStorage.getItem('compare');
         if (compareItems){
-            let indexId = compareItems.split(',').indexOf(this.props.id.toString())
+            let indexId = compareItems.split(',').indexOf(this.props.id)
             if (indexId >= 0) this.setState({active: !this.state.active})
         }
     }
