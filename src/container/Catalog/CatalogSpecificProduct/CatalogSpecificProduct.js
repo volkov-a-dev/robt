@@ -1,11 +1,10 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { axiosMain } from '../../../axios-path-config';
-import classes from './CatalogNames.module.scss';
+import classes from './CatalogSpecificProduct.module.scss';
 import FilterCatalog from './FilterCatalog/FilterCatalog';
 
-import ProductPreView from '../CatalogNames/Product/ProductPreView/ProductPreView';
-class CatalogNames extends Component {
+import ProductPreView from './Product/ProductPreView/ProductPreView';
+class CatalogSpecificProduct extends Component {
   state = {
     products: []
   }
@@ -48,4 +47,4 @@ class CatalogNames extends Component {
   }
 }
 
-export default CatalogNames;
+export default CatalogSpecificProduct;

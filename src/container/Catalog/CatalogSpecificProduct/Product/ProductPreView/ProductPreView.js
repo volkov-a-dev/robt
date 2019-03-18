@@ -1,6 +1,8 @@
 import React from "react";
 import classes from "./ProductPreView.module.scss";
 import СompareAction from '../../../Сompare/СompareAction/СompareAction';
+import { Link } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 
 const productPreView = props => {
     let img;
@@ -16,6 +18,9 @@ const productPreView = props => {
         </div>
         );
     }
+    console.log(props)
+    console.log(props.match.url + props["html_url"])
+    let urlProduct = props.match.url + props["html_url"];
 
     return (
         <div className={classes["schema-product"]}>
@@ -26,10 +31,10 @@ const productPreView = props => {
             <div className={classes["schema-product__info-left"]}>{img}</div>
             <div className={classes["schema-product__info-rigth"]}>
             <div className={classes["schema-product__title"]}>
-                {/* <Link to={{
-                    pathname: props.match.url + props["html_url"],
+                <Link to={{
+                    pathname: urlProduct,
                     state: { id: props.id }
-                }} className={classes["schema-product__link"]}>{props.name}</Link> */}
+                }} className={classes["schema-product__link"]}>{props.name}</Link>
             </div>
             <div className={classes["schema-product__description"]}>
                 <span>{props.description}</span>
@@ -69,4 +74,4 @@ const productPreView = props => {
     );
 };
 
-export default productPreView;
+export default withRouter(productPreView);

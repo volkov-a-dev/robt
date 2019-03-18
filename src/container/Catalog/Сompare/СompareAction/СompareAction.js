@@ -1,28 +1,53 @@
 import React, { Component } from 'react';
 
+
 class CompareAction extends Component {
     state = {
-        id : null,
-        checked: false
+        active: false
     }
 
     componentDidMount() {
-        console.info(this.props.id)
+
         let compareItems = localStorage.getItem('compare');
-        console.log(compareItems)
-        if (!compareItems){
-            localStorage.setItem('compare', '123123123, 12312312, 12312323')  
+        if (compareItems){
+            let indexId = compareItems.split(',').indexOf(this.props.id.toString())
+            if (indexId >= 0) this.setState({active: !this.state.active})
         }
-        compareItems = localStorage.getItem('compare');
-        console.log(compareItems)
+    }
+
+    handleClick = id => {
+        const checkedState =  !this.state.active;
+        this.setState({active: checkedState});
+        let compareItems = localStorage.getItem('compare');
+        
+        if (!compareItems) {
+            localStorage.setItem('compare', id); 
+        } else {
+            if (checkedState) {
+                let compareUpdate = compareItems.split(' ');
+                compareUpdate.push(id)
+                localStorage.setItem('compare', compareUpdate.join(',')); 
+            } else {
+                let compareUpdate = compareItems.split(',');
+                let index = compareUpdate.indexOf(id.toString());
+                compareUpdate.splice(index, 1)
+                localStorage.setItem('compare', compareUpdate)
+                
+                if (!localStorage.getItem('compare')) {
+                    localStorage.removeItem('compare');
+                }
+            }
+        }
     }
 
     render() {
 
         return (
             <div>
-            
-                {/* <input type="checkbox" onChange={this.state.checked} checked={this.state.checked} /> */}
+    
+                <input type="checkbox" 
+                    checked={this.state.active}
+                    onChange={() => this.handleClick(this.props.id)} />
                 <label htmlFor="schpcom_1" />
             </div>
         )
