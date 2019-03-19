@@ -1,5 +1,4 @@
 import React from 'react';
-import Aux from '../../hoc/Aux/Aux';
 import PostPreview from './PostPreview/PostPreview';
 // import * as actions  from '../../store/actions/index';
 // import { connect } from 'react-redux';
@@ -41,10 +40,11 @@ let bundleNews = (props) => {
             blocks = <div>....</div>
             break;
     }
+
     return(
-        <Aux>
+        <>
             {blocks}
-        </Aux>
+        </>
     );
 }
 

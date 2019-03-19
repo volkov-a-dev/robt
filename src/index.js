@@ -6,6 +6,7 @@ import { Provider } from 'react-redux';
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import newsReducer from './store/reducers/news';
+import compareReducer from './store/reducers/compare';
 
 import 'normalize.css';
 import './index.css';
@@ -16,6 +17,7 @@ const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX
 
 const roootReducer = combineReducers({
   news: newsReducer,
+  compare: compareReducer
 })
 
 const store = createStore(roootReducer, composeEnhancers(

@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-// import Aux from '../../hoc/Aux/Aux';
+
 import * as actions  from '../../store/actions/index';
 import { connect } from 'react-redux';
-// import axios from '../../axios-path-config';
 
 import BundleNews from '../../components/BundleNews/BundleNews';
 import TitleLink from '../../components/UI/Title/TitleLink/TitleLink';
@@ -27,7 +26,6 @@ class MainPage extends Component {
     )
   }
 }
-
 
 const mapStateToProps = state => {
   return {

@@ -1,7 +1,6 @@
 
 import React from 'react';
 // import classes from './Title.module.scss';
-import Aux from '../../../hoc/Aux/Aux';
 
 const title = props => {
     let tatleBlock;
@@ -18,9 +17,9 @@ const title = props => {
             break;
     }
     return (
-        <Aux >
+        <>
             {tatleBlock}
-        </Aux>
+        </>
     )
 }
 

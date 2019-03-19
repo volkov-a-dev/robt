@@ -1,31 +1,19 @@
 import React, { Component, Suspense } from 'react';
 import { Switch, Route, withRouter } from 'react-router-dom';
 
-import Layout from './hoc/Layout/Layout';
-import asyncComponent from './hoc/asyncComponent/asyncComponent';
-
-import CatalogSpecificProduct from './container/Catalog/CatalogSpecificProduct/CatalogSpecificProduct';
-import Compare from './container/Catalog/Сompare/Сompare';
-
-
-
-// const asyncCatalog = asyncComponent(() => {
-//   return import('./container/Catalog/Catalog');
-// });
-
-// import './App.css';
+import Layout from './container/Layout/Layout';
 
 const MainPage = React.lazy(() => import('./container/MainPage/MainPage'));
 const MainBlog = React.lazy(() => import('./container/Blog/Blog'));
 const Catalog = React.lazy(() => import('./container/Catalog/Catalog'));
 const MainCategory = React.lazy(() =>  import('./container/Blog/Category/Category'));
 const Post = React.lazy(() => import('./container/Blog/Post/Post'));
-
-const Product = asyncComponent(() => import('./container/Catalog/CatalogSpecificProduct/Product/Product'));
-const CompareTable = asyncComponent(() => import('./container/Catalog/Сompare/CompareTable/CompareTable'));
-
-
+const Product = React.lazy(() => import('./container/Catalog/CatalogSpecificProduct/Product/Product'));
+const Compare = React.lazy(() => import('./container/Catalog/Сompare/Сompare'));
+const CompareTable = React.lazy(() => import('./container/Catalog/Сompare/CompareTable/CompareTable'));
+const CatalogSpecificProduct = React.lazy(() => import('./container/Catalog/CatalogSpecificProduct/CatalogSpecificProduct'));
 class App extends Component {
+
   render() {
     let router = (
       <>
@@ -72,10 +60,10 @@ class App extends Component {
           
           <Route path="/catalog/:name" exact 
             render={() =>
-              <div>
+              <Suspense fallback={null}>
                 <CatalogSpecificProduct />
                 <Compare />
-              </div>
+              </Suspense>
             }
             />
           

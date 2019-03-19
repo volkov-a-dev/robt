@@ -1,8 +1,9 @@
 import React from "react";
 import classes from "./ProductPreView.module.scss";
-import CompareAction from '../../../Сompare/СompareAction/СompareAction'
-import { Link } from 'react-router-dom';
-import { withRouter } from 'react-router-dom';
+import CompareAction from '../../../Сompare/CompareAction/CompareAction';
+
+import { Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 
 const productPreView = props => {
     let img;
