@@ -4,6 +4,6 @@ export {
 
 export {
     getCompare,
-    setCompare,
+    addCompare,
     removeCompare
 } from './compare';

@@ -19,15 +19,15 @@ const productPreView = props => {
         </div>
         );
     }
-    console.log(props)
-    console.log(props.match.url + props["html_url"])
+    // console.log(props)
+    // console.log(props.match.url + props["html_url"])
     let urlProduct = props.match.url + props["html_url"];
-    console.log('urlProduct', urlProduct)
+    // console.log('urlProduct', urlProduct)
 
     return (
         <div className={classes["schema-product"]}>
             <div className={classes["schema-product__comparison"]}>
-                <CompareAction />
+                <CompareAction {...props} />
                 
             </div>
             <div className={classes["schema-product__info"]}>

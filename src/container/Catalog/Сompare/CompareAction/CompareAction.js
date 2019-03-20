@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import * as actions  from '../../../../store/actions/';
 
 
 class CompareAction extends Component {
@@ -7,15 +9,15 @@ class CompareAction extends Component {
     }
 
     componentDidMount() {
-
-        // let compareItems = localStorage.getItem('compare');
-        // if (compareItems){
-        //     let indexId = compareItems.split(',').indexOf(this.props.id)
-        //     if (indexId >= 0) this.setState({active: !this.state.active})
-        // }
+        this.props.onGetCompare()
+        if (this.props.compare.indexOf(this.props.id.toString()) >= 0) {
+            console.warn(this.props.id)
+            this.setState({active: true })
+        }
     }
 
     handleClick = id => {
+        console.log(id)
         // const checkedState =  !this.state.active;
         // this.setState({active: checkedState});
         // let compareItems = localStorage.getItem('compare');
@@ -41,12 +43,14 @@ class CompareAction extends Component {
     }
 
     render() {
+        // console.log(this.props.compare.indexOf(this.props.id.toString()) >= 0)
+   
         
         return (
             <div>
                 <input type="checkbox" 
                     checked={this.state.active}
-                    onChange={() => this.handleClick(this.props.id)} />
+                    onChange={() => this.props.onAddCompare(this.props.id.toString(), this.props.compare)} />
                 <label htmlFor="schpcom_1" />
             </div>
         )
@@ -54,9 +58,18 @@ class CompareAction extends Component {
 }
 
 
-export default CompareAction;
+const mapStateToProps = state => {
+    return {
+        compare: state.compare.compare,
+    }
+}
+const mapDispatchToProps = dispatch => {
+    return {
+        onGetCompare: () => dispatch(actions.getCompare()),
+        onAddCompare: (id, addedArray) => dispatch(actions.addCompare(id, addedArray))
+        
+        
+    }
+}
 
-
-
-
-
+export default connect(mapStateToProps, mapDispatchToProps)(CompareAction);
