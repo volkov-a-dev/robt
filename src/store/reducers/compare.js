@@ -8,7 +8,8 @@ if (compareItems) {
 }
 
 const initialState = {
-    compare: compareArray
+    compare: compareArray,
+    removeAll: true
 };
 
 
@@ -20,19 +21,22 @@ const reducer = (state = initialState, action) => {
         case actionTypes.SET_COMPARE_ITEM: {
             return {
                 ...state, 
-                compare: action.compare
+                compare: [...action.compare],
+                removeAll: action.removeAll
             }
         }
         case actionTypes.REMOVE_COMPARE_ITEM: {
             return {
                 ...state,
-                compare: action.compare
+                compare: [...action.compare],
+                removeAll: action.removeAll
             }
         }
         case actionTypes.REMOVE_COMPARE_ALL_ITEMS: {
             return {
                 ...state,
-                compare: action.compare
+                compare: [],
+                removeAll: action.removeAll
             }
         }
         default: return state;

@@ -10,47 +10,38 @@ class CompareAction extends Component {
 
     componentDidMount() {
         this.props.onGetCompare()
-        if (this.props.compare.indexOf(this.props.id.toString()) >= 0) {
-            console.warn(this.props.id)
+        if (this.props.compare.compare.indexOf(this.props.id.toString()) >= 0) {
             this.setState({active: true })
         }
     }
 
-    handleClick = id => {
-        console.log(id)
-        // const checkedState =  !this.state.active;
-        // this.setState({active: checkedState});
-        // let compareItems = localStorage.getItem('compare');
-        
-        // if (!compareItems) {
-        //     localStorage.setItem('compare', id); 
-        // } else {
-        //     if (checkedState) {
-        //         let compareUpdate = compareItems.split(' ');
-        //         compareUpdate.push(id)
-        //         localStorage.setItem('compare', compareUpdate.join(',')); 
-        //     } else {
-        //         let compareUpdate = compareItems.split(',');
-        //         let index = compareUpdate.indexOf(id.toString());
-        //         compareUpdate.splice(index, 1)
-        //         localStorage.setItem('compare', compareUpdate)
-                
-        //         if (!localStorage.getItem('compare')) {
-        //             localStorage.removeItem('compare');
-        //         }
-        //     }
-        // }
+    //To do: need to test
+    componentDidUpdate(prevProps) {
+        if (prevProps.compare !== this.props.compare && !this.props.compare.removeAll) {
+            this.setState({
+                active: false
+            })
+        }
+    }
+
+    handleClick = (id, compareArray) => {
+        let checked = this.state.active;
+
+        if (!checked) {
+            this.props.onAddCompare(id, compareArray);
+            this.setState({ active: !checked });
+        } else {
+            this.setState({ active: !checked });
+            this.props.onRemoveByIdCompare(id, compareArray);
+        }
     }
 
     render() {
-        // console.log(this.props.compare.indexOf(this.props.id.toString()) >= 0)
-   
-        
         return (
             <div>
                 <input type="checkbox" 
                     checked={this.state.active}
-                    onChange={() => this.props.onAddCompare(this.props.id.toString(), this.props.compare)} />
+                    onChange={() => this.handleClick(this.props.id.toString(), this.props.compare.compare)} />
                 <label htmlFor="schpcom_1" />
             </div>
         )
@@ -60,14 +51,14 @@ class CompareAction extends Component {
 
 const mapStateToProps = state => {
     return {
-        compare: state.compare.compare,
+        compare: state.compare,
     }
 }
 const mapDispatchToProps = dispatch => {
     return {
         onGetCompare: () => dispatch(actions.getCompare()),
-        onAddCompare: (id, addedArray) => dispatch(actions.addCompare(id, addedArray))
-        
+        onAddCompare: (id, addedArray) => dispatch(actions.addCompare(id, addedArray)),
+        onRemoveByIdCompare: (id, addedArray) => dispatch(actions.remomeByIdCompare(id,addedArray))
         
     }
 }

@@ -73,6 +73,7 @@ class App extends Component {
             render={() => (
               <Suspense fallback={null}>
                 <Product />
+                <Compare />
               </Suspense>
             )}/>
 

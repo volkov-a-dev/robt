@@ -5,5 +5,6 @@ export {
 export {
     getCompare,
     addCompare,
-    removeCompare
+    remomeByIdCompare,
+    removeAllIdsCompare
 } from './compare';

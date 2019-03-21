@@ -3,17 +3,39 @@ import { connect } from 'react-redux';
 import * as actions  from '../../../store/actions/index';
 import CompareBtn from '../../../components/UI/CompareBtn/CompareBtn';
 class Compare extends Component {
-    componentDidMount() {
-        this.props.onGetCompare()
+    state = {
+        show: false,
+        warningMassage: false
     }
 
+    componentDidMount() {
+        this.props.onGetCompare();
+        if (this.props.compare.length) {
+            this.setState({show: true})
+        }
+    }
+
+    warningClickHandler = () => {
+
+    }
+
+    removeAllCompareHandler = () => {
+        this.setState({show: false});
+        this.props.removeAllIdsCompare();
+    }
+
+    componentDidUpdate(prevProps) {
+        if (prevProps.compare !== this.props.compare ) {
+            if (this.props.compare.length > 0) this.setState({ show: true });
+
+            if (this.props.compare.length === 0) this.setState({ show: false });
+        }
+    }
 
     render() {
-        let compareBtnStatus = false;
         let nameBtn;
-        
+
         if (this.props.compare) {
-            compareBtnStatus = true;
             let addedItems = this.props.compare.length;
             
             //To do: Need to do: rewrite this keys for text display
@@ -41,7 +63,12 @@ class Compare extends Component {
 
         return (
             <>
-                <CompareBtn view={compareBtnStatus} name={nameBtn}/>
+                <CompareBtn 
+                    view={this.state.show} 
+                    name={nameBtn}
+                    showWarninMassage={this.state.warningMassage}
+                    confirmClick={this.removeAllCompareHandler} 
+                    click={this.warningClickHandler}/>
             </>
         )
     }
@@ -54,10 +81,10 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onGetCompare: () => dispatch(actions.getCompare())
+        onGetCompare: () => dispatch(actions.getCompare()),
+        removeAllIdsCompare: () => dispatch(actions.removeAllIdsCompare())
         
     }
 }
-export default connect(mapStateToProps, mapDispatchToProps)(Compare);
 
-// export default Compare;
+export default connect(mapStateToProps, mapDispatchToProps)(Compare);

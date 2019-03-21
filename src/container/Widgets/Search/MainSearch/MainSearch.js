@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
-import classes from './MainSearch.module.scss';
+// import classes from './MainSearch.module.scss';
 
-import Modal from '../../../../components/UI/Modal/Modal';
+// import Modal from '../../../../components/UI/Modal/Modal';
 
 class FormSearch extends Component {
     state = {
-        modalView: false,
+
         searchTxt: '',
         
     };
@@ -26,15 +26,15 @@ class FormSearch extends Component {
 
 
     inputChangedHandler = (event) => {
-        let inputValue = event.target.value;
-        if (inputValue) {
-            this.setState({modalView: true , searchTxt: inputValue})
-        }
+        // let inputValue = event.target.value;
+        // if (inputValue) {
+        //     this.setState({modalView: true , searchTxt: inputValue})
+        // }
 
     }
     
     searchCancelHandler = () => {
-        this.setState({modalView: false})
+        // this.setState({modalView: false})
     }
 
     // inputModalHandler = (event) => {
@@ -43,15 +43,15 @@ class FormSearch extends Component {
     // }
 
     render() {
-        let modalView = [classes.modal];
+        // let modalView = [classes.modal];
 
-        if (this.state.modalView) {
-            modalView = [classes.modal, classes["modal_show"]]
-        }
+        // if (this.state.modalView) {
+        //     modalView = [classes.modal, classes["modal_show"]]
+        // }
 
         return (
             <>
-            <div id="fast-search" className={classes["fast-search"]}>
+            {/* <div id="fast-search" className={classes["fast-search"]}>
                 <form className={classes["fast-search__form"]} action="//catalog.onliner.by/search/" method="get" autoComplete="off">
                     <input
                         className={classes["fast-search__input"]} 
@@ -63,7 +63,7 @@ class FormSearch extends Component {
                     <button className={classes["fast-search__submit"]} type="submit">Найти</button>
                 </form>
                 <button onClick={this.openBtnHandler}>x</button>
-            </div>
+            </div> */}
 
             {/* <div className={modalView.join(' ')}>
                 <div className={classes["modal__wrap"]}>
@@ -79,7 +79,7 @@ class FormSearch extends Component {
                 </div>
             </div> */}
 
-            <Modal show={this.state.modalView} modalClosed={this.searchCancelHandler} />
+            {/* <Modal show={this.state.modalView} modalClosed={this.searchCancelHandler} /> */}
             </>
         )    
     }
