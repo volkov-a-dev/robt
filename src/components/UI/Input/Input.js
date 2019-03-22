@@ -8,13 +8,37 @@ const input = props => {
 
     switch (props.elementType) {
         case ('input'):
-            inputElement = <input
-                className={inputClasses.join(' ')}
-                {...props.elementConfig}
-                value={props.value}
-                onChange={props.changed}
-                />;
-            break;
+            // if (props.elementConfig.type === 'checkbox') {
+            //     if (props.elementConfig.options.length) {
+            //         // let inputs = props.elementConfig.options.map(i => {
+            //         //     return {
+
+            //             // }
+            //         // })
+            //     } else {
+            //         inputElement = <input
+            //         className={inputClasses.join(' ')}
+            //         {...props.elementConfig}
+            //         value={props.value}
+            //         onChange={props.changed}
+            //         />;
+            //     }
+            //     inputElement = <div>
+                    
+            //         {/* <input {...props.elementConfig} */}
+            //     </div>
+            // }
+            
+            // if (props.elementConfig.type === 'input') {
+                inputElement = <input
+                    className={inputClasses.join(' ')}
+                    {...props.elementConfig}
+                    value={props.value}
+                    onChange={props.changed}
+                    />;
+            // }
+        break;
+
         case ('select'):
             inputElement = (
                 <select 

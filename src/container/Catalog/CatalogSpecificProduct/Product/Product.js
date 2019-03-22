@@ -20,7 +20,7 @@ class Product extends Component {
 
   
   render() {
-    console.log(this.state.product.children)
+    // console.log(this.state.product.children.)
     return (
       <div className={classes['product']}>
         <div className={classes['product__header']}>

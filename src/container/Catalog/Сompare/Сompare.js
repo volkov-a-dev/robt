@@ -9,7 +9,6 @@ class Compare extends Component {
     }
 
     componentDidMount() {
-        this.props.onGetCompare();
         if (this.props.compare.length) {
             this.setState({show: true})
         }
@@ -81,9 +80,7 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onGetCompare: () => dispatch(actions.getCompare()),
         removeAllIdsCompare: () => dispatch(actions.removeAllIdsCompare())
-        
     }
 }
 

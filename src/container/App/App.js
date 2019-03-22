@@ -12,7 +12,7 @@ const Product = React.lazy(() => import('../Catalog/CatalogSpecificProduct/Produ
 const Compare = React.lazy(() => import('../Catalog/Сompare/Сompare'));
 const CompareTable = React.lazy(() => import('../Catalog/Сompare/CompareTable/CompareTable'));
 const CatalogSpecificProduct = React.lazy(() => import('../Catalog/CatalogSpecificProduct/CatalogSpecificProduct'));
-
+const Forum = React.lazy(() => import('../Forum/Forum'));
 class App extends Component {
 
   render() {
@@ -84,6 +84,16 @@ class App extends Component {
                 <CompareTable/>
               </Suspense>
             )}/>
+
+          <Route 
+            path="/forum" 
+            render={() => (
+              <Suspense fallback={null}>
+                <Forum/>
+              </Suspense>
+            )}/>
+
+
         </Switch>
       </>
     );

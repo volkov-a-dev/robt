@@ -9,6 +9,7 @@ const news = require('./api/news');
 
 const categoryPhone = require('./api/categoryPhones');
 const fastNavigation = require('./api/catalogFastNav');
+const forumMain = require('./api/forumMain');
 
 const app = express();
 
@@ -81,6 +82,12 @@ app.get('/api/category-phone', (req, res) => {
 app.get('/api/catalog-fast-nav', (req, res) => {
     res.send(fastNavigation);
 });
+
+
+app.get('/api/forum-main', (req, res) => {
+    res.send(forumMain);
+});
+
 
 app.get('/api/product/:id', (req, res) => {
     

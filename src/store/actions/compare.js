@@ -1,13 +1,5 @@
 import * as actionTypes from '../../constants/actionTypes';
 
-export const getCompare = (items) => {
-    return {
-        type: actionTypes.GET_COMPARE_ITEM,
-        compare: items,
-        removeAll: true
-    }
-};
-
 export const setCompare = (items) => {
     return {
         type: actionTypes.SET_COMPARE_ITEM,
@@ -58,7 +50,6 @@ export const remomeByIdCompare = (id, addedItems) => {
 
 export const removeAllIdsCompare = () => {
     return dispatch => {
-        console.log('removre compare js action')
         localStorage.removeItem('compare');
         dispatch(removeAllCompare())
     }

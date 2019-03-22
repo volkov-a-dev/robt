@@ -5,18 +5,23 @@ import classes from './FilterCatalog.module.scss';
 class FilterCatalog extends Component {
     state = {
         filterForm: {
-            name: {
+            manufacturer: {
                 elementType: 'input',
                 elementConfig: {
-                    type: 'text',
-                    placeholder: 'Brand'
+                    type: 'checkbox',
+                    title: 'Производитель',
+                    description: '',
+                    options: ['Samsung', 'Xiaomi', 'Apple', 'Huawei', 'Honor', 'Sony']
                 },
-                value: '',
-                validation: {
-                    required: true
+            },
+            operatingSystem: {
+                elementType: 'input',
+                elementConfig: {
+                    type: 'checkbox',
+                    title: 'Операционная система',
+                    description: 'Название операционной системы (семейства операционных систем), установленной на смартфоне. Имеет набор стандартных функций и определяет интерфейс взаимодействия с телефоном, программные возможности смартфона, способы приобретения, хранения и использования данных и программ. Чем более распространенной и популярной является операционная система, тем больше программ разрабатывается под нее. На рынке постоянно происходит борьба операционных систем, а точнее, платформ и инфраструктур. В первом десятилетии XXI века основными конкурентами на рынке мобильных платформ являются Google (Android), Apple (iOS) и Microsoft (Windows Phone).',
+                    options: ['Samsung', 'Xiaomi', 'Apple', 'Huawei', 'Honor', 'Sony']
                 },
-                valid: false,
-                touched: false,
             },
 
             brand: {
@@ -63,7 +68,6 @@ class FilterCatalog extends Component {
                             elementType={formElement.config.elementType}
                             elementConfig={formElement.config.elementConfig}
                             value={formElement.config.value}
-                            touched={formElement.config.touched}
                             changed={(event) => this.inputChangedHandler(event, formElement.id)}
                         />
                     )

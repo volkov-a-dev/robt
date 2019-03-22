@@ -9,7 +9,6 @@ class CompareAction extends Component {
     }
 
     componentDidMount() {
-        this.props.onGetCompare()
         if (this.props.compare.compare.indexOf(this.props.id.toString()) >= 0) {
             this.setState({active: true })
         }
@@ -56,7 +55,6 @@ const mapStateToProps = state => {
 }
 const mapDispatchToProps = dispatch => {
     return {
-        onGetCompare: () => dispatch(actions.getCompare()),
         onAddCompare: (id, addedArray) => dispatch(actions.addCompare(id, addedArray)),
         onRemoveByIdCompare: (id, addedArray) => dispatch(actions.remomeByIdCompare(id,addedArray))
         

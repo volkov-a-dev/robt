@@ -15,9 +15,6 @@ const initialState = {
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        case actionTypes.GET_COMPARE_ITEM: {
-            return {...state}
-        }
         case actionTypes.SET_COMPARE_ITEM: {
             return {
                 ...state, 

@@ -3,8 +3,11 @@ export {
 } from './news';
 
 export {
-    getCompare,
     addCompare,
     remomeByIdCompare,
     removeAllIdsCompare
 } from './compare';
+
+export {
+    fetchInitMainTopics
+} from './forum';
