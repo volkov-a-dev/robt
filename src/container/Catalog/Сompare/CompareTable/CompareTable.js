@@ -5,6 +5,7 @@ class CompareTable extends Component {
     state = {
         compareItems : []
     }
+
     componentDidMount() {
         axiosMain.get('/category-phone')
             .then(response => {

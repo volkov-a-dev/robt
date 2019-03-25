@@ -13,6 +13,8 @@ const Compare = React.lazy(() => import('../Catalog/Сompare/Сompare'));
 const CompareTable = React.lazy(() => import('../Catalog/Сompare/CompareTable/CompareTable'));
 const CatalogSpecificProduct = React.lazy(() => import('../Catalog/CatalogSpecificProduct/CatalogSpecificProduct'));
 const Forum = React.lazy(() => import('../Forum/Forum'));
+const AutoBMain = React.lazy(() => import('../AutoBMain/AutoBMain'));
+const AutoBMark = React.lazy(() => import('../AutoBMain/AutoBMark/AutoBMark'));
 class App extends Component {
 
   render() {
@@ -92,7 +94,22 @@ class App extends Component {
                 <Forum/>
               </Suspense>
             )}/>
-
+          <Route 
+            path="/ab"
+            exact
+            render={() => (
+              <Suspense fallback={null}>
+                <AutoBMain/>
+              </Suspense>
+            )}/>
+          <Route 
+            path="/ab/:mark" 
+            render={() => (
+              <Suspense fallback={null}>
+                <AutoBMark/>
+              </Suspense>
+            )}/>
+            
 
         </Switch>
       </>
