@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 // import { Route } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import FastNavCatalog from '../../container/FastNavCatalog/FastNavCatalog';
+// import FastNavCatalog from '../../container/FastNavCatalog/FastNavCatalog';
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { faIgloo } from '@fortawesome/free-solid-svg-icons'
 
@@ -89,7 +89,7 @@ class Catalog extends Component {
           <ul>
             {catalogNavItems}
           </ul>
-          <FastNavCatalog type="line"/>
+          {/* <FastNavCatalog type="line"/> */}
 
         </div>
         {hotPositionUI}

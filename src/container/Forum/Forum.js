@@ -26,7 +26,7 @@ class Forum extends Component {
                 )
             })    
         }
-        
+
         let loading = <div>Loading...</div>;
 
         if (!this.props.loading) {
@@ -42,6 +42,7 @@ class Forum extends Component {
                 </>
             )
         }
+
         return(
             <div>
                 {loading}
