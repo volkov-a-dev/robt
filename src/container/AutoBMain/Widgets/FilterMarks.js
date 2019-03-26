@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Button from '../../../components/UI/Button/Button';
+import 'rheostat/initialize';
 
 class FilterMarks extends Component {
     state = {
@@ -80,7 +81,6 @@ class FilterMarks extends Component {
                     <div className="lists-mark">
                         <div className="IndexMarks__col">
                             {colCars}
-                         
                         </div>
                     </div>
                     <div className="IndexSelector__bottom-controls">
