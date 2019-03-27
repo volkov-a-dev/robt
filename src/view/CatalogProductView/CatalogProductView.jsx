@@ -3,7 +3,7 @@ import { axiosMain } from '../../axios-path-config';
 import classes from './CatalogProductView.module.scss';
 import FilterCatalog from '../../container/Catalog/CatalogSpecificProduct/FilterCatalog/FilterCatalog';
 
-import ProductPreView from '../../container/Catalog/CatalogSpecificProduct/Product/Product';
+import ProductPreView from '../../components/Cart/ProductPreView/ProductPreViewContainers';
 class CatalogSpecificProduct extends Component {
     state = {
         products: []
@@ -24,7 +24,7 @@ class CatalogSpecificProduct extends Component {
 
         if (this.state.products) {
         product = this.state.products.map(product => {
-            // return <ProductPreView key={product.id} {...this.props} {...product} />
+            return <ProductPreView key={product.id} {...this.props} {...product} />
         })
         }
         return (

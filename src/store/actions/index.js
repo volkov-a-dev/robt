@@ -1,13 +1,13 @@
-export {
-    fetchInitAllNews
-} from './news';
+// export {
+//     fetchInitAllNews
+// } from './news';
 
-export {
-    addCompare,
-    remomeByIdCompare,
-    removeAllIdsCompare
-} from './compare';
+// export {
+//     addCompare,
+//     remomeByIdCompare,
+//     removeAllIdsCompare
+// } from './compare';
 
-export {
-    fetchInitMainTopics
-} from './forum';
+// export {
+//     fetchInitMainTopics
+// } from './forum';

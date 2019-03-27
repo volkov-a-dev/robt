@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 
-// import * as actions  from '../../store/actions/index';
-import  * as actions from '../../store/actions/index';
+import  * as actions from '../../modules/news'
 import { connect } from 'react-redux';
 
 import BundleNews from '../../components/BundleNews/BundleNews';

@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import { axiosMain } from '../../axios-path-config';
-import classes from './ProductView.module.scss';
+import { axiosMain } from '../../../../axios-path-config';
+// import classes from './Product.module.scss';
 class Product extends Component {
   state = {
     product: []
@@ -22,8 +22,8 @@ class Product extends Component {
   render() {
     // console.log(this.state.product.children.)
     return (
-      <div className={classes['product']}>
-        <div className={classes['product__header']}>
+      <div className={'product'}>
+        <div className={'product__header'}>
         {/* <!--Path --> */}
           <div className="">breadcrumbs</div>
             <ol className="breadcrumbs__list" itemScope="" itemType="http://schema.org/BreadcrumbList">
