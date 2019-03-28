@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FilterMarksContainers from '../../containers/FilterMarksContainers/FilterMarksContainers';
+import FilterMarksContainer from '../../containers/FilterMarksContainer/FilterMarksContainer';
 
 
 class AutoMotoMainPageView extends Component {
@@ -8,7 +8,7 @@ class AutoMotoMainPageView extends Component {
             <>
                 <div>
                     <h1>Widget care filter</h1>
-                    <FilterMarksContainers />
+                    <FilterMarksContainer />
                 </div>
 
             </>

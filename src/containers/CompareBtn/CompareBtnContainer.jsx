@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import * as actions  from '../../../store/actions/index';
-import CompareBtn from '../../../components/UI/CompareBtn/CompareBtn';
-class Compare extends Component {
+import * as actions  from '../../modules/compare';
+import CompareBtn from '../../components/UI/CompareBtn/CompareBtn';
+
+class CompareBtnContainer extends Component {
     state = {
         show: false,
         warningMassage: false
@@ -67,7 +68,7 @@ class Compare extends Component {
                     name={nameBtn}
                     showWarninMassage={this.state.warningMassage}
                     confirmClick={this.removeAllCompareHandler} 
-                    click={this.warningClickHandler}/>
+                    click={this.removeAllCompareHandler}/>
             </>
         )
     }
@@ -84,4 +85,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Compare);
+export default connect(mapStateToProps, mapDispatchToProps)(CompareBtnContainer);

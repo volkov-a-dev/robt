@@ -4,10 +4,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
-import reducer from './store/reducers';
+import reducer from './appConfig/rootReducer';
 import 'normalize.css';
 import './index.css';
-import RootRoute from './RootRouting';
+import RootRoute from './appConfig/RootRouting';
 import * as serviceWorker from './serviceWorker';
 
 const composeEnhancers = process.env.NODE_ENV === 'development' ? window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ : null || compose;

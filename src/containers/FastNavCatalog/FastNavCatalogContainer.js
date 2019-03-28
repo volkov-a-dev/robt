@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { axiosMain } from '../../axios-path-config';
 
 import classes from './FastNavCatalog.module.scss';
+
 class FastNavCatalog extends Component {
     state = {
         nav: []

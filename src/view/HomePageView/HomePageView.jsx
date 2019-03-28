@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 
 import BundleNews from '../../components/BundleNews/BundleNews';
 import TitleLink from '../../components/UI/Title/TitleLink/TitleLink';
-import FastNavCatalog from '../../container/FastNavCatalog/FastNavCatalog';
+import FastNavCatalog from '../../containers/FastNavCatalog/FastNavCatalogContainer';
 
 class MainPage extends Component {
 
@@ -14,6 +14,7 @@ class MainPage extends Component {
     }
 
     render() {
+        console.log(this.props.news)
         return (
         <div className="NainWap">
             <FastNavCatalog type="line"/>

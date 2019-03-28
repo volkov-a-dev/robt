@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 
-import * as actions  from '../../store/actions/index';
+import * as actions  from '../../modules/forum';
 import { connect } from 'react-redux';
 
 import ListGroup from '../../components/UI/Lists/ListGroup/ListGroup';
 
-class Forum extends Component {
+class ForumView extends Component {
 
     componentDidMount () {
         this.props.onFetchAllTopics();
@@ -64,4 +64,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default  connect(mapStateToProps, mapDispatchToProps)(Forum);
+export default  connect(mapStateToProps, mapDispatchToProps)(ForumView);

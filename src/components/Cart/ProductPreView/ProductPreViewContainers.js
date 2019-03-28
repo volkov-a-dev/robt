@@ -1,7 +1,7 @@
 import React from "react";
 import classes from "./ProductPreView.module.scss";
 // import CompareAction from '../../../Сompare/CompareAction/CompareAction';
-
+import CompareCheckboxContainer from '../../../containers/CompareCheckbox/CompareCheckboxContainer';
 import { Link } from "react-router-dom";
 import { withRouter } from "react-router-dom";
 
@@ -27,7 +27,7 @@ const ProductPreViewContainers = props => {
     return (
         <div className={classes["schema-product"]}>
             <div className={classes["schema-product__comparison"]}>
-                {/* <CompareAction {...props} /> */}
+                <CompareCheckboxContainer {...props} />
                 
             </div>
             <div className={classes["schema-product__info"]}>

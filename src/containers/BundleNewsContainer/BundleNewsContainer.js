@@ -1,6 +1,6 @@
 import React from 'react';
-import PostPreview from './PostPreview/PostPreview';
-// import * as actions  from '../../store/actions/index';
+import PostPreview from '../PostPreview/PostPreviewContainer';
+// import * as actions  from '';
 // import { connect } from 'react-redux';
 import classes from './BundleNews.module.scss';
 
@@ -14,8 +14,6 @@ let bundleNews = (props) => {
                     {
                         Object.keys(props.news).map((i, index) => {
                             if (index < props.step) {
-                                console.log(index)
-                                console.log(props.step)
                                 let post = props.news[i];
 
                                 return (

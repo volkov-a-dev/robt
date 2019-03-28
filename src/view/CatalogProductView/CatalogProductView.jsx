@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { axiosMain } from '../../axios-path-config';
 import classes from './CatalogProductView.module.scss';
-import FilterCatalog from '../../container/Catalog/CatalogSpecificProduct/FilterCatalog/FilterCatalog';
+// import FilterCatalog from '../../container/Catalog/CatalogSpecificProduct/FilterCatalog/FilterCatalog';
 
 import ProductPreView from '../../components/Cart/ProductPreView/ProductPreViewContainers';
 class CatalogSpecificProduct extends Component {
@@ -33,7 +33,7 @@ class CatalogSpecificProduct extends Component {
 
             <div className={classes["shema-grid"]}>
             <div className={classes["shema-grid__left-column"]}>wrap 1
-                <FilterCatalog />
+                {/* <FilterCatalog /> */}
             </div>
             <div className={classes["shema-grid__center-column"]}>
                 <div className={classes["schema-products"]}>

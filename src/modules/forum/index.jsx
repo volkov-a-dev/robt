@@ -1,1 +1,3 @@
-// ....
+export {
+    fetchInitMainTopics
+} from './actionDispatcher'

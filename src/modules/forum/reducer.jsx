@@ -1,4 +1,4 @@
-// import * as actionTypes from '../../constants/actionTypes';
+import * as actionTypes from './types';
 // import { updateObject } from '../../shared/utility';
 
 
@@ -7,22 +7,31 @@ const initialState = {
     loading: false,
 };
 
-// const fetchInit = (state, action) =>  updateObject(state, {loading: true});
-// const fetchSuccess = (state, action) => {
-//     const topicsList = updateObject(state.news, action.posts);
-
-//     return updateObject(state, {
-//         topics: topicsList,
-//         loading: false
-//     });
-// }
-// const fetchFail = (state, action) =>  updateObject(state, {loading: false});
+const fetchInit = (state, action) => {
+    return {
+        ...state,
+        loading: true
+    }
+};
+const fetchSuccess = (state, action) => {
+    return {
+        ...state,
+        topics: action.posts,
+        loading: false
+    }
+}
+const fetchFail = (state, action) => {
+    return {
+        ...state,
+        loading: false
+    }
+}
 
 const reducer = (state = initialState, action) => {
     switch (action.type) {
-        // case actionTypes.FETCH_ALL_FORUM_TOPICS_START: return fetchInit(state, action);
-        // case actionTypes.FETCH_ALL_FORUM_TOPICS_SUCCESS: return fetchSuccess(state, action);
-        // case actionTypes.FETCH_ALL_FORUM_TOPICS_FAIL: return fetchFail(state, action)
+        case actionTypes.FETCH_ALL_FORUM_TOPICS_START: return fetchInit(state, action);
+        case actionTypes.FETCH_ALL_FORUM_TOPICS_SUCCESS: return fetchSuccess(state, action);
+        case actionTypes.FETCH_ALL_FORUM_TOPICS_FAIL: return fetchFail(state, action)
         default: return state;
     }
 }

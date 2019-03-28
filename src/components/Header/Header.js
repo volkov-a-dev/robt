@@ -1,9 +1,9 @@
 import React from 'react';
 import classes from './Header.module.scss';
 import NavigationItems from '../Navigation/NavigationItems/NavigationItems';
-import NavigationWidget from '../Navigation/NavigationWidget/NavigationWidget';
-import FormSearch from '../../container/Widgets/Search/MainSearch/MainSearch';
-import Logo from '../Logo/Logo';
+// import NavigationWidget from '../Navigation/NavigationWidget/NavigationWidget';
+// import FormSearch from '../../container/Widgets/Search/MainSearch/MainSearch';
+// import Logo from '../Logo/Logo';
 
 const header = props => {
   const mainNavigation = [
@@ -42,17 +42,17 @@ const header = props => {
           <nav className={classes.MainNavigation}>
               <NavigationItems nav={mainNavigation} />
           </nav>
-          <NavigationWidget />
+          {/* <NavigationWidget /> */}
         </div>
       </div>
 
       <div className={classes.MainHeaderAction}>
         <div className={classes.MainHeaderActionContainer}>
           <div className={classes.HeaderLogo}>
-            <Logo />
+            {/* <Logo /> */}
           </div>
           <section className={classes.HeaderSearch}>
-            <FormSearch />
+            {/* <FormSearch /> */}
           </section>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { axiosMain } from '../../../../axios-path-config';
+import { axiosMain } from '../../axios-path-config';
 
 class CompareTableView extends Component {
     state = {
@@ -39,7 +39,6 @@ class CompareTableView extends Component {
         return (
             <div className="table">
                 {table}
-
             </div>
         )
     }

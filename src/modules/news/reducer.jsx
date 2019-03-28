@@ -13,10 +13,9 @@ const fetchInit = (state, action) => {
 };
 
 const fetchSuccess = (state, action) => {
-    const newsList = [...state.news, action.posts];
     return {
         ...state,
-        news: newsList,
+        news:  action.posts,
         loading: false
     }
 };
