@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
-// import Button from '../../../components/UI/Button/Button';
+import FilterSingleMarkContainer from '../../containers/FilterSingleMarkContainer/FilterSingleMarkContainer';
 
 class AutoBMark extends Component {
     render() {
         return (
             <>
+                <FilterSingleMarkContainer />
                 <div>
                     <h1>Widget care filter AutoBMark</h1>
                     <div className="header">

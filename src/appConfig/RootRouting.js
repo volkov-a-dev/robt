@@ -17,16 +17,9 @@ const BlogView = React.lazy(() => import('../view/BlogView/BlogView'));
 const BlogCategoryView = React.lazy(() => import('../view/BlogCategoryView/BlogCategoryView'));
 const BlogPostView = React.lazy(() => import('../view/BlogPostView/BlogPostView'));
 
-// const Post = React.lazy(() => import('../../Blog/Post/Post'));
-// const Product = React.lazy(() => import('../../Catalog/CatalogSpecificProduct/Product/Product'));
-// const Compare = React.lazy(() => import('../../Catalog/Сompare/Сompare'));
 // const CompareTable = React.lazy(() => import('../../Catalog/Сompare/CompareTable/CompareTable'));
 
-// const AutoBMain = React.lazy(() => import('../../AutoBMain/AutoBMain'));
-// const AutoBMark = React.lazy(() => import('../../AutoBMain/AutoBMark/AutoBMark'));
-
 class RootRoute extends Component {
-
     render() {
         let router = (
         <>

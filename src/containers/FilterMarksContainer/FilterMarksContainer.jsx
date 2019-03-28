@@ -1,45 +1,93 @@
 import React, { Component } from "react";
 // import Button from '../../../components/UI/Button/Button';
 
-import { Button } from "antd";
+import { Row, Col, Button } from "antd";
 import "antd/dist/antd.css";
 
 const ButtonGroup = Button.Group;
 // import "./index.css";
-class FilterMarks extends Component {
-    state = {
-        cars: [
+
+const carsArray = {
+    main: [
         {
-            name: "Lada",
-            count: 12123
+            name : "vs"
         },
         {
-            name: "bmw",
-            count: 12123
+            name: "toyota"
         },
         {
-            name: "audi",
-            count: 12123
+            name: "ms"
         },
         {
-            name: "ford",
-            count: 12123
+            name: "mm"
+        },
+        {
+            name: "lada"
+        },
+        {
+            name: "kia"
+        },
+        {
+            name: "hyundai"
+        },
+        {
+            name: "ford"
+        },
+        {
+            name: "bmw"
+        },
+        {
+            name: "audi"
         }
-        ]
-    };
+    ],
+    allList: [
+        {
+            name : "vs",
+        },
+        {
+            name: "toyota"
+        },
+        {
+            name: "ms"
+        },
+        {
+            name: "mm"
+        },
+        {
+            name: "lada"
+        },
+        {
+            name: "kia"
+        },
+        {
+            name: "hyundai"
+        },
+        {
+            name: "ford"
+        },
+        {
+            name: "bmw"
+        },
+        {
+            name: "audi"
+        }
+    ]
+};
+
+class FilterMarks extends Component {
 
     render() {
-        let cars = this.state.cars.map((i, index) => {
+        let cars = carsArray.allList.map((i, index) => {
         return (
             <li key={index}>
             <a href="/">
-                <div className="logo-mark">{i.name}</div>
+                <div className="logo-mark" >{i.name}</div>
             </a>
             </li>
         );
         });
 
-        let colCars = this.state.cars.map((i, index) => {
+        let colCars = carsArray.allList.map((i, index) => {
         return (
             <a
             key={index}
@@ -52,35 +100,41 @@ class FilterMarks extends Component {
         );
         });
 
+        let markLogo = carsArray.main.map((i, index) => {
+            return (
+                <Col span={2} key={index}>
+                    <a href="/ab/mark">
+                        <div>{i.name}</div>
+                    </a>
+                </Col>
+            )
+        });
+
         return (
         <>
             <div className="header">
+                <Row type="flex" justify="start">
+                    <Col xs={2} sm={4} md={6} lg={6} xl={6} >
+                        <ButtonGroup>
+                            <Button>Марки</Button>
+                            <Button>Помощник</Button>
+                        </ButtonGroup>
+                    </Col>
+                    <Col span={6} offset={12}>
+                        <ButtonGroup>
+                            <Button>Все</Button>
+                            <Button>Новые</Button>
+                            <Button>С пробегом</Button>
+                        </ButtonGroup>
+                    </Col>
+                </Row>
+                
+                <Row type="flex" justify="start">
+                    {markLogo}
+                </Row>
+ 
             <div>
-                <ButtonGroup>
-                <ul>
-                    <li>
-                    <Button>Марки</Button>
-                    </li>
-                    <li>
-                    <Button>Помощник</Button>
-                    </li>
-                </ul>
-                </ButtonGroup>
-            </div>
-            <div>
-                <ButtonGroup>
-                <ul>
-                    <li>
-                    <Button>Все</Button>
-                    </li>
-                    <li>
-                    <Button>Новые</Button>
-                    </li>
-                    <li>
-                    <Button>С пробегом</Button>
-                    </li>
-                </ul>
-                </ButtonGroup>
+
             </div>
             </div>
             <div className="body">

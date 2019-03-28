@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import FilterMarks from './Widgets/FilterMarks';
+import FilterMarks from '../FilterMarksContainer/FilterMarksContainer';
 
 class AutoBMain extends Component {
     render() {
@@ -7,7 +7,7 @@ class AutoBMain extends Component {
             <>
                 <div>
                     <h1>Widget care filter</h1>
-                    <FilterMarks />
+                    {/* <FilterMarks /> */}
                 </div>
 
             </>
