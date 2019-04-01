@@ -1,0 +1,195 @@
+{
+    "cars" : [
+        {
+            "model": "a1",
+            "displayValue": "a1",
+            "value": "a1",
+            "used": false,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "a1",
+            "displayValue": "a1",
+            "value": "a1",
+            "used": false,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "a1",
+            "displayValue": "a1",
+            "value": "a1",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "a2",
+            "displayValue": "a2",
+            "value": "a2",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "a1",
+            "displayValue": "a1",
+            "value": "a1",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "bmw",
+            "displayValue": "m1",
+            "value": "m1",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "bmw",
+            "displayValue": "m1",
+            "value": "m1",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "bmw",
+            "displayValue": "m1",
+            "value": "m1",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "bmw",
+            "displayValue": "m4",
+            "value": "m4",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "bmw",
+            "displayValue": "m2",
+            "value": "m2",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "lada",
+            "displayValue": "2101",
+            "value": "2101",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "lada",
+            "displayValue": "2101",
+            "value": "2101",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "lada",
+            "displayValue": "2115",
+            "value": "2115",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "lada",
+            "displayValue": "2115",
+            "value": "2115",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "opel",
+            "displayValue": "Admiral",
+            "value": "Admiral",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+
+        {
+            "model": "opel",
+            "displayValue": "Admiral",
+            "value": "Admiral",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        },
+        {
+            "model": "opel",
+            "displayValue": "Astra",
+            "value": "Astra",
+            "used": true,
+            "description": {
+                "color": "red",
+                "typeBody": "cupe"
+            },
+            "price": "10000$"
+        }
+
+        
+    ],
+    "total": 7
+}

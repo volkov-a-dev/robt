@@ -11,6 +11,9 @@ const categoryPhone = require('./api/categoryPhones');
 const fastNavigation = require('./api/catalogFastNav');
 const forumMain = require('./api/forumMain');
 
+const carsList = require('./api/car/carAudi');
+
+
 const app = express();
 
 let nextId = 4;
@@ -108,6 +111,11 @@ app.get('/api/product/:id', (req, res) => {
     });
 });
 
+
+
+app.get('/api/cars-list', (req, res) => {
+    res.send(carsList);
+});
 
 app.get('*', (req, res) => {
     fs.readFile(`${__dirname}/public/index.html`, (error, html) => {

@@ -10,17 +10,60 @@ import {
     Icon,
     Checkbox
 } from "antd";
-
+import { axiosMain } from '../../axios-path-config';
 import "antd/dist/antd.css";
 
 const Option = Select.Option;
 
 const ButtonGroup = Button.Group;
 
-
- 
-
 class FilterSingleMarkContainer extends Component {
+    handleChangeMarks = (value) => {
+        console.log(`selected ${value}`, this);
+        this.setState({
+            ...this.state,
+            filterFields: {
+                ...this.state.filterFields,
+                model: {
+                    ...this.state.filterFields.model,
+                    elementConfig: {
+                        ...this.state.filterFields.model.elementConfig,
+                        options: [],
+                        disabled: false
+                    }
+                }
+            }
+        })
+
+        axiosMain.get('/cars-list')
+            .then(response => {
+                let updateSelect = this.getUnique(response.data.cars, 'value').filter((i) => {
+                    return i.model === value;
+                });
+
+
+                this.setState({
+                    ...this.state,
+                    filterFields: {
+                        ...this.state.filterFields,
+                        model: {
+                            ...this.state.filterFields.model,
+                            elementConfig: {
+                                ...this.state.filterFields.model.elementConfig,
+                                options: updateSelect,
+                                disabled: false
+                            }
+                        }
+                    }
+                })
+            })
+            .catch(error => {
+                console.log(error)
+                // this.setState({error: true})
+            });   
+        
+    }
+
     state = {
         filterFields : {
             marks: {
@@ -40,20 +83,16 @@ class FilterSingleMarkContainer extends Component {
                 showSearch: false,
                 actions: {
                     change: this.handleChangeMarks,
-                    focus: this.handleFocusMarks,
-                    blur: this.handleBlurMarks
+                    focus: this.handleFocus,
+                    blur: this.handleBlur
                 }
                 
             },
             model: {
                 type: "select",
                 elementConfig: {
-                    placeholder: "Марка",
+                    placeholder: "Модель",
                     options: [
-                        {value: "100", displayValue: "100"},
-                        {value: "80", displayValue: "80"},
-                        {value: "a4", displayValue: "a4"},
-                        {value: "a3", displayValue: "a3"}
                     ],
                     disabled: true
                 },
@@ -69,9 +108,20 @@ class FilterSingleMarkContainer extends Component {
         }
     }
 
-    handleChangeMarks = (value) => {
-        console.log(`selected ${value}`);
+    componentDidUpdate(){
+        console.warn('componentn did upodate!!', this.state)
     }
+    
+    getUnique = (arr,comp) => {
+        const unique =  arr.map(e => e[comp])
+            .map((e,i,final) => final.indexOf(e) === i && i)
+            .filter((e)=> arr[e])
+            .map(e => arr[e]);
+
+        return unique
+    }
+
+ 
 
     handleFocusMarks = () => {
         console.log("focus");
@@ -81,9 +131,6 @@ class FilterSingleMarkContainer extends Component {
     handleBlurMarks = () => {
         console.log("blur");
     };
-
-
-
 
     handleBlur = () => {
         console.log("blur");
@@ -110,20 +157,22 @@ class FilterSingleMarkContainer extends Component {
         switch (obj.config.type) {
             case "select":
                 let options = obj.config.elementConfig.options.map((i, index) => {
+                    console.log('-------------', i)
                     return (
                         <Option key={index} value={i.value}>{i.displayValue}</Option>
                     )
                 })
 
-                 block = (
+                block = (
                     <Select
                         showSearch
                         style={{ width: 100 }}
                         placeholder={obj.config.elementConfig.placeholder}
                         optionFilterProp="children"
-                        onChange={this.handleChange}
-                        onFocus={this.handleFocus}
-                        onBlur={this.handleBlur}
+                        onChange={obj.config.actions.change}
+                        onFocus={obj.config.actions.focus}
+                        onBlur={obj.config.actions.change}
+                        disabled={obj.config.elementConfig.blur}
                         filterOption={(input, option) =>
                         option.props.children
                             .toLowerCase()
@@ -606,9 +655,7 @@ class FilterSingleMarkContainer extends Component {
                             <Button>С пробегом</Button>
                         </ButtonGroup>
                     </Col>
-                    <Col >
-                        <Button>С пробегом</Button>
-                    </Col>
+                    <Col ></Col>
                 </Row>
 
                 <Row type="flex" justify="space-between">
