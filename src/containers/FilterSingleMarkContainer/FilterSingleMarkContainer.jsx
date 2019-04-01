@@ -1,140 +1,93 @@
 import React, { Component } from "react";
-import {
-    Row,
-    Col,
-    Button,
-    Card,
-    Select
-} from "antd";
-import { axiosMain } from '../../axios-path-config';
+import { Row, Col, Button, Card, Form, Input } from "antd";
+import { axiosMain } from "../../axios-path-config";
+import Select from "../../components/UI/Select/Select";
 import "antd/dist/antd.css";
 
-const Option = Select.Option;
 const ButtonGroup = Button.Group;
 
 class FilterSingleMarkContainer extends Component {
-    handleChangeMarks = (value) => {
-        this.setState({
-            ...this.state,
-            filterFields: {
-                ...this.state.filterFields,
-                model: {
-                    ...this.state.filterFields.model,
-                    elementConfig: {
-                        value: " "
-                    }
-                }
-            }
-        })
-        
-        console.log(`selected ${value}`, this);
-        axiosMain.get('/cars-list')
-            .then(response => {
-                let updateSelect = this.getUnique(response.data.cars, 'value').filter((i) => {
-                    return i.model === value;
-                });
-
-                this.setState({
-                    ...this.state,
-                    filterFields: {
-                        ...this.state.filterFields,
-                        model: {
-                            ...this.state.filterFields.model,
-                            elementConfig: {
-                                ...this.state.filterFields.model.elementConfig,
-                                options: updateSelect,
-                                disabled: false
-                            }
-                        }
-                    }
-                })
-            })
-            .catch(error => {
-                console.log(error)
-                // this.setState({error: true})
-            });   
-        
-    }
-
     state = {
-        filterFields : {
-            marks: {
-                type: "select",
-                id: "marks",
-                styleWrap: "1/3",
-                elementConfig: {
-                    placeholder: "Марка",
-                    options: [
-                        {value: "bmw", displayValue: "bmw"},
-                        {value: "audi", displayValue: "audi"},
-                        {value: "lada", displayValue: "lada"},
-                        {value: "opel", displayValue: "opel"}
-                    ],
-                    disabled: false
-                },
-                value: "",
-                showSearch: false,
-                actions: {
-                    change: this.handleChangeMarks,
-                    focus: this.handleFocus,
-                    blur: this.handleBlur
-                }
-                
+        brands: {
+            options: [
+                { value: "bmw", displayValue: "bmw" },
+                { value: "audi", displayValue: "audi" },
+                { value: "lada", displayValue: "lada" },
+                { value: "opel", displayValue: "opel" }
+            ],
+            value: null,
+            disabled: false
+        },
+        model: {
+            options: [],
+            value: " ",
+            disabled: true
+        },
+        generation: {
+            options: [],
+            value: " ",
+            disabled: true
+        },
+        careBody: {
+            options: [
+                { value: "saloon", displayValue: "saloon" },
+                { value: "hatchback", displayValue: "hatchback" },
+                { value: "Convertible", displayValue: "Convertible" },
+                { value: "Estate", displayValue: "Estate" }
+            ],
+            value: null,
+            disabled: false
+        },
+
+        antiTheft: {
+            options: [
+                { value: "no", displayValue: "no" },
+                { value: "yes", displayValue: "yes" },
+                { value: "yes+", displayValue: "yes+" },
+            ],
+            centralLocking: {
+                checked: false,
+                disabled: false
             },
-            model: {
-                type: "select",
-                styleWrap: "2/3",
-                elementConfig: {
-                    placeholder: "Модель",
-                    options: [
-                    ],
-                    disabled: true
-                },
-                value: "",
-                showSearch: false,
-                actions: {
-                    change: this.handleChangeModel,
-                    focus: this.handleFocusModel,
-                    blur: this.handleBlurModel
-                }
-                
-            }
+            IPSVolumeSensor: {
+                checked: false,
+                disabled: false
+            },
+            Immobilizer: {
+                checked: false,
+                disabled: false
+            },
+        },
+
+        multimedia: {
+            aux: false,
+            bluerooth: false,
+            usb: false,
         }
+    };
+
+    handleChangeMarks = value => {
+    };
+
+    componentDidUpdate() {
+        console.warn(!this.state.model.options, "componentn did upodate!!", this.state);
+        // this.setState({
+        //     ...this.state,
+        //     model: {
+        //         ...this.state.model,
+        //         disabled: true,
+        //     }
+        // })
     }
 
+    getUnique = (arr, comp) => {
+        const unique = arr
+        .map(e => e[comp])
+        .map((e, i, final) => final.indexOf(e) === i && i)
+        .filter(e => arr[e])
+        .map(e => arr[e]);
 
-    componentDidUpdate(){
-        console.warn('componentn did upodate!!', this.state)
-    }
-    
-    getUnique = (arr,comp) => {
-        const unique =  arr.map(e => e[comp])
-            .map((e,i,final) => final.indexOf(e) === i && i)
-            .filter((e)=> arr[e])
-            .map(e => arr[e]);
-
-        return unique
-    }
-
-    handleFocusMarks = () => {
-        console.log("focus");
-    };
-
-
-    handleBlurMarks = () => {
-        console.log("blur");
-    };
-
-    handleBlur = () => {
-        console.log("blur");
-    };
-
-    handleFocus = () => {
-        console.log("focus");
-    };
-
-    onChange = e => {
-        console.log(`checked = ${e.target.checked}`);
+        return unique;
     };
 
     log = e => console.log(e);
@@ -144,104 +97,143 @@ class FilterSingleMarkContainer extends Component {
         console.log("Clicked! But prevent default.");
     };
 
-
-    formBuilderHandler = (obj, order) => {
-        let block;
-        switch (obj.config.type) {
-            case "select":
-                let options = null;
-                
-                if (obj.config.elementConfig.options && obj.config.elementConfig.options.length >= 0) {
-                    options = obj.config.elementConfig.options.map((i, index) => {
-                        // console.log('-------------', i)
-                        return (
-                            <Option key={index} value={i.value}>{i.displayValue}</Option>
-                        )
-                    })
-                }
-
-                block = (
-                    <Select
-                        key={order}
-                        showSearch
-                        style={{ width: 100 }}
-                        placeholder={obj.config.elementConfig.placeholder}
-                        optionFilterProp="children"
-                        defaultActiveFirstOption={true}
-                        allowClear={true}
-                        onChange={obj.config.actions.change}
-                        onFocus={obj.config.actions.focus}
-                        onBlur={obj.config.actions.blur}
-                        disabled={obj.config.elementConfig.disabled}
-                        filterOption={(input, option) =>
-                        option.props.children
-                            .toLowerCase()
-                            .indexOf(input.toLowerCase()) >= 0
-                        }
-                    >
-                    {options}
-                    </Select>
-                )
-                
-                return options ? block : null;
-                
-            default: return (
-            <div>Lol</div>
-            )
-        }
-    }
-
-    render() {
-
-        const formElementsArray = [];
-        
-        for (let key in this.state.filterFields) {
-            formElementsArray.push({
-                id: key,
-                config: this.state.filterFields[key]
+    changeBrandsHandler = value => {
+        axiosMain.get('/cars-list')
+            .then(response => {
+                let updateSelect = this.getUnique(response.data.cars, 'value').filter((i) => {
+                    return i.model === value;
+                });
+                this.setState({
+                    ...this.state,
+                    brands: {
+                        ...this.state.brands,
+                        value: value
+                    },
+                    model: {
+                        ...this.state.model,
+                        options: updateSelect,
+                        disabled: false,
+                        value: null
+                    }
+                })
             })
-        }
-        
-        let formBuilder = formElementsArray.map((i, index) => {
-            console.log('formBuilder', i)
+            .catch(error => {
+                console.log(error)
+                // this.setState({error: true})
+            });
+    };
 
-            return (
-                this.formBuilderHandler(i, index)
-            )
+    changeModelHandler = value => {
+        this.setState({
+            ...this.state,
+            model: {
+                ...this.state.model,
+                value: value
+            }
         })
+    }
 
-        let card = (
-            <Card style={{ width: 800 }}>
-                <Row type="flex" justify="space-between">
-                    <Col span={10}>
-                        <ButtonGroup>
-                            <Button>Все</Button>
-                            <Button>Новые</Button>
-                            <Button>С пробегом</Button>
-                        </ButtonGroup>
-                    </Col>
-                    <Col ></Col>
-                </Row>
-                <Row type="flex" justify="space-between">
-                {formBuilder}
-                </Row>
-            </Card>
-        )
+    blurHandlerChange = () => {
+        console.log("blurHandlerChange");
+    };
 
-
-        let filterHtml = (
+        render() {
+            const { getFieldDecorator } = this.props.form;
+            let MainFilds = (
             <Row>
-                <Row>
-                    {card}
-                </Row>
+                <Form
+                    labelCol={{ span: 5 }}
+                    wrapperCol={{ span: 12 }}
+                    onSubmit={this.handleSubmit}
+                >
+                    <Row type="flex">
+                        <Col span={8}>
+                            <Form.Item>
+                                {getFieldDecorator("note", {
+                                rules: [{ required: false, message: "Please input your note!" }]
+                                })(
+                                <Select
+                                    options={this.state.brands.options}
+                                    placeholder="Brands"
+                                    change={this.changeBrandsHandler}
+                                    blur={this.blurHandlerChange}
+                                    disabled={this.state.brands.disabled}
+                                    valueSelect={this.state.brands.value}
+                                />
+                                )}
+                            </Form.Item>
+                        </Col>
+                        <Col span={8}>
+                            <Form.Item>
+                                {getFieldDecorator("note", {
+                                rules: [{ required: false, message: "Please input your note!" }]
+                                })(
+                                    
+                                <Select
+                                    options={this.state.model.options}
+                                    placeholder="Model"
+                                    change={this.changeModelHandler}
+                                    blur={this.blurHandlerChange}
+                                    disabled={this.state.model.disabled}
+                                    valueSelect={this.state.model.value}
+                                />
+                                )}
+                            </Form.Item>
+                        </Col>
+                        <Col span={8}>
+                            <Form.Item>
+                                {getFieldDecorator("note", {
+                                rules: [{ required: false, message: "Please input your note!" }]
+                                })(
+                                <Select
+                                    options={this.state.brands.options}
+                                    placeholder="Brands"
+                                    change={this.selectHandlerChange}
+                                    blur={this.blurHandlerChange}
+                                    disabled={this.state.brands.disabled}
+                                    valueSelect={this.state.brands.value}
+                                />
+                                )}
+                            </Form.Item>
+                        </Col>
+                    </Row>
+
+               
+                </Form>
             </Row>
-        )
-        return (
-        <>
-            {filterHtml}
-        </>
-        );
-    }
+            );
+
+            let cardForm = (
+                <Card style={{ width: 800 }}>
+                    <Row type="flex" justify="space-between">
+                        <Col span={10}>
+                            <ButtonGroup>
+                                <Button>Все</Button>
+                                <Button>Новые</Button>
+                                <Button>С пробегом</Button>
+                            </ButtonGroup>
+                        </Col>
+                    </Row>
+                    <Row type="flex">{MainFilds}</Row>
+
+                    <Row type="flex" justify="space-between">
+                        <Col>
+                            <Button>All paramns</Button>
+                            <Button>Clear</Button>
+                        </Col>
+                        <Col>
+                            <Button>Show <span> {this.state.model.options.length}</span></Button>
+                        </Col>
+                    </Row>
+                </Card>
+            );
+
+            return <>{cardForm}</>;
+        }
     }
 
-    export default FilterSingleMarkContainer;
+    const WrappedApp = Form.create({ name: "coordinated" })(
+    FilterSingleMarkContainer
+    );
+
+export default WrappedApp;
