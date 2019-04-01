@@ -21,7 +21,7 @@ class FilterSingleMarkContainer extends Component {
                 model: {
                     ...this.state.filterFields.model,
                     elementConfig: {
-                        value: null
+                        value: " "
                     }
                 }
             }
@@ -61,6 +61,7 @@ class FilterSingleMarkContainer extends Component {
             marks: {
                 type: "select",
                 id: "marks",
+                styleWrap: "1/3",
                 elementConfig: {
                     placeholder: "Марка",
                     options: [
@@ -82,6 +83,7 @@ class FilterSingleMarkContainer extends Component {
             },
             model: {
                 type: "select",
+                styleWrap: "2/3",
                 elementConfig: {
                     placeholder: "Модель",
                     options: [
@@ -114,8 +116,6 @@ class FilterSingleMarkContainer extends Component {
         return unique
     }
 
- 
-
     handleFocusMarks = () => {
         console.log("focus");
     };
@@ -145,7 +145,7 @@ class FilterSingleMarkContainer extends Component {
     };
 
 
-    formBuilderHandler = obj => {
+    formBuilderHandler = (obj, order) => {
         let block;
         switch (obj.config.type) {
             case "select":
@@ -153,17 +153,16 @@ class FilterSingleMarkContainer extends Component {
                 
                 if (obj.config.elementConfig.options && obj.config.elementConfig.options.length >= 0) {
                     options = obj.config.elementConfig.options.map((i, index) => {
-                        console.log('-------------', i)
+                        // console.log('-------------', i)
                         return (
                             <Option key={index} value={i.value}>{i.displayValue}</Option>
                         )
                     })
                 }
-                
-
 
                 block = (
                     <Select
+                        key={order}
                         showSearch
                         style={{ width: 100 }}
                         placeholder={obj.config.elementConfig.placeholder}
@@ -184,8 +183,6 @@ class FilterSingleMarkContainer extends Component {
                     </Select>
                 )
                 
-                
-
                 return options ? block : null;
                 
             default: return (
@@ -206,11 +203,10 @@ class FilterSingleMarkContainer extends Component {
         }
         
         let formBuilder = formElementsArray.map((i, index) => {
-            console.log(i)
+            console.log('formBuilder', i)
+
             return (
-                <div key={index}>
-                    {this.formBuilderHandler(i, index)}
-                </div>
+                this.formBuilderHandler(i, index)
             )
         })
 
