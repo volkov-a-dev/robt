@@ -13,7 +13,7 @@ const initialState = {
 };
 
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.SET_COMPARE_ITEM: {
             return {
@@ -38,6 +38,4 @@ const reducer = (state = initialState, action) => {
         }
         default: return state;
     }
-}
-
-export default reducer;
+};

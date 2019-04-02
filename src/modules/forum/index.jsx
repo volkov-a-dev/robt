@@ -1,3 +1,2 @@
-export {
-    fetchInitMainTopics
-} from './actionDispatcher'
+export * from './actionDispatcher';
+export { reducer } from './reducer';

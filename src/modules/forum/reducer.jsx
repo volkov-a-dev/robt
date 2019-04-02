@@ -27,13 +27,11 @@ const fetchFail = (state, action) => {
     }
 }
 
-const reducer = (state = initialState, action) => {
+export const reducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_ALL_FORUM_TOPICS_START: return fetchInit(state, action);
         case actionTypes.FETCH_ALL_FORUM_TOPICS_SUCCESS: return fetchSuccess(state, action);
         case actionTypes.FETCH_ALL_FORUM_TOPICS_FAIL: return fetchFail(state, action)
         default: return state;
     }
-}
-
-export default reducer;
+};

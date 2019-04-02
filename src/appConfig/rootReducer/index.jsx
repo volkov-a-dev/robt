@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux';
 
-import compare from '../../modules/compare/reducer';
-import news from '../../modules/news/reducer';
-import forum from '../../modules/forum/reducer'
+import {reducer as compare } from '../../modules/compare';
+import {reducer as news } from '../../modules/news';
+import {reducer as forum } from '../../modules/forum'
 
 const appReducers = combineReducers({
     compare,
