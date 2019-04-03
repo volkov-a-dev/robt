@@ -2,9 +2,18 @@ import React, { Component } from 'react';
 import FilterSingleMarkContainer from '../../containers/FilterSingleMarkContainer/FilterSingleMarkContainer';
 
 class AutoBMark extends Component {
+    componentDidMount() {
+        // console.log(this.props.location)
+        // console.log(this.state)
+        console.log(this.props.match, 'componentDidMount', this.state, this.props)
+
+    }
+
     render() {
+        
         return (
             <>
+
                 <FilterSingleMarkContainer />
                 <div>
                     <h1>Widget care filter AutoBMark</h1>

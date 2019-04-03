@@ -6,7 +6,7 @@ import ListItem from '../ListItem/ListItem';
 const listGroup = props => {
 
     let listItem;
-    console.log(props)
+    // console.log(props)
 
     if (props.listItems && props.listItems.length >= 0) {
         listItem = props.listItems.map((i,index) => {

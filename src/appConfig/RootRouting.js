@@ -23,26 +23,35 @@ class RootRoute extends Component {
     render() {
         let router = (
         <>
+        {/* <Suspense fallback={null}> */}
+
             <Switch>
                 <Route 
                     path="/" 
                     exact 
                     render={() => (
-                    <Suspense fallback={null}>
-                        <MainPage />
-                    </Suspense>
-                )}/>
+                        <Suspense fallback={null}>
+                            <MainPage />
+                        </Suspense>
+                    )}
+                    // component={MainPage}
+
+                />
             
                 <Route 
                     path="/catalog" 
                     exact
+                    // component={CatalogView}
                     render={() => (
                     <Suspense fallback={null}>
                         <CatalogView/>
                     </Suspense>
-                )} />
+                )}
+                />
 
-                <Route path="/catalog/:name" exact 
+                <Route path="/catalog/:name"
+                    exact
+                    // component={CatalogProductView}
                     render={() =>
                     <Suspense fallback={null}>
                         <CatalogProductView />
@@ -53,34 +62,50 @@ class RootRoute extends Component {
             
             <Route 
                 path="/catalog/:name/:element"
+                // component={ProductView}
+
                 render={() => (
                 <Suspense fallback={null}>
                     <ProductView />
                     <CompareBtnContainer />
                 </Suspense>
-                )}/>
+                )}
+                
+            />
             <Route 
                 path="/ab"
                 exact
+                // component={AutoBMain}
+
                 render={() => (
                 <Suspense fallback={null}>
                     <AutoBMain/>
                 </Suspense>
-                )}/>
+                )}
+                    
+                />
             <Route 
-                path="/ab/:mark" 
+                path="/(ab|ab/all)/"
+                // component={AutoMotoListsView}
+
                 render={() => (
                 <Suspense fallback={null}>
                     <AutoMotoListsView/>
                 </Suspense>
-                )}/>
+                )}
+
+                />
             <Route 
-                path="/compare" 
+                path="/compare"
+                // component={CompareTableView}
+ 
                 render={() => (
                 <Suspense fallback={null}>
                     <CompareTableView/>
                 </Suspense>
-                )}/>
+                )}
+
+                />
             
             <Route 
                 path="/forum" 
@@ -114,6 +139,8 @@ class RootRoute extends Component {
                 </Suspense>
             )} />
             </Switch>
+            {/* </Suspense> */}
+
         </>
         );
 

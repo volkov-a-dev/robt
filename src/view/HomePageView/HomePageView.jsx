@@ -14,7 +14,7 @@ class MainPage extends Component {
     }
 
     render() {
-        console.log(this.props.news)
+        // console.log(this.props.news)
         return (
         <div className="NainWap">
             <FastNavCatalog type="line"/>

@@ -13,9 +13,7 @@ let bundleNews = (props) => {
                 <div className={[classes.Row, classes.RowThree].join(' ')}>
                     {
                         Object.keys(props.news).map((i, index) => {
-                            if (index < props.step) {
-                                console.log(index)
-                                console.log(props.step)
+                            if (index < props.step) {  
                                 let post = props.news[i];
 
                                 return (

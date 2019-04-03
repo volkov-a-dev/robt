@@ -4,7 +4,7 @@ const listItem = props => {
 
     let listITem;
 
-    console.warn(props)
+    // console.warn(props)
     switch (props.style) {
         case "icon-auth":
             listITem = 

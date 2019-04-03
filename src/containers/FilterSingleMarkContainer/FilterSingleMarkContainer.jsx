@@ -1,109 +1,112 @@
 import React, { Component } from "react";
-import { Row, Col, Button, Card, Form, Input, Typography, Checkbox } from "antd";
+import { Row, Col, Button, Card, Form,  Typography, Checkbox } from "antd";
 import { axiosMain } from "../../axios-path-config";
 import Select from "../../components/UI/Select/Select";
+import { withRouter } from "react-router";
 
 import "antd/dist/antd.css";
 
 const ButtonGroup = Button.Group;
 const { Title } = Typography;
 
-const initialState = {
-    brands: {
-        options: [
-            { value: "bmw", displayValue: "bmw" },
-            { value: "audi", displayValue: "audi" },
-            { value: "lada", displayValue: "lada" },
-            { value: "opel", displayValue: "opel" }
-        ],
-        value: null,
-        disabled: false
-    },
-    model: {
-        options: [],
-        value: " ",
-        disabled: true
-    },
-    generation: {
-        options: [],
-        value: " ",
-        disabled: true
-    },
-    careBody: {
-        options: [
-            { value: "saloon", displayValue: "saloon" },
-            { value: "hatchback", displayValue: "hatchback" },
-            { value: "Convertible", displayValue: "Convertible" },
-            { value: "Estate", displayValue: "Estate" }
-        ],
-        value: null,
-        disabled: false
-    },
-
-    antiTheft: {
-        options: [
-            { value: "no", displayValue: "no" },
-            { value: "yes", displayValue: "yes" },
-            { value: "yes+", displayValue: "yes+" },
-        ],
-        centralLocking: {
-            checked: false,
+class FilterSingleMarkContainer extends Component {
+    state = {
+        visibleAllFilter: false,
+        brands: {
+            options: [
+                { value: "bmw", displayValue: "bmw" },
+                { value: "audi", displayValue: "audi" },
+                { value: "lada", displayValue: "lada" },
+                { value: "opel", displayValue: "opel" }
+            ],
+            value: null,
             disabled: false
         },
-        IPSVolumeSensor: {
-            checked: false,
+        model: {
+            options: [],
+            value: " ",
+            disabled: true
+        },
+        generation: {
+            options: [],
+            value: " ",
+            disabled: true
+        },
+        careBody: {
+            options: [
+                { value: "saloon", displayValue: "saloon" },
+                { value: "hatchback", displayValue: "hatchback" },
+                { value: "Convertible", displayValue: "Convertible" },
+                { value: "Estate", displayValue: "Estate" }
+            ],
+            value: null,
             disabled: false
         },
-        Immobilizer: {
-            checked: false,
-            disabled: false
-        },
-    },
-
-    multimedia: {
-        audiosystem: {
+    
+        antiTheft: {
             options: [
                 { value: "no", displayValue: "no" },
                 { value: "yes", displayValue: "yes" },
                 { value: "yes+", displayValue: "yes+" },
-            ]
+            ],
+            centralLocking: {
+                checked: false,
+                disabled: false
+            },
+            IPSVolumeSensor: {
+                checked: false,
+                disabled: false
+            },
+            Immobilizer: {
+                checked: false,
+                disabled: false
+            },
         },
-        aux: {
-            checked: false,
-            disabled: false
+    
+        multimedia: {
+            audiosystem: {
+                options: [
+                    { value: "no", displayValue: "no" },
+                    { value: "yes", displayValue: "yes" },
+                    { value: "yes+", displayValue: "yes+" },
+                ]
+            },
+            aux: {
+                checked: false,
+                disabled: false
+            },
+            bluerooth: {
+                checked: false,
+                disabled: false
+            },
+            usb: {
+                checked: false,
+                disabled: false
+            },
+            jack12V: {
+                checked: false,
+                disabled: false
+            },
+            jack220V: {
+                checked: false,
+                disabled: false
+            }
         },
-        bluerooth: {
-            checked: false,
-            disabled: false
-        },
-        usb: {
-            checked: false,
-            disabled: false
-        },
-        jack12V: {
-            checked: false,
-            disabled: false
-        },
-        jack220V: {
-            checked: false,
-            disabled: false
-        }
-    },
-
-    other: {
-        airSuspension: {
-            checked: false,
-            disabled: false
-        },
-        hitch: {
-            checked: false,
-            disabled: false
+    
+        other: {
+            airSuspension: {
+                checked: false,
+                disabled: false
+            },
+            hitch: {
+                checked: false,
+                disabled: false
+            }
         }
     }
-}
-class FilterSingleMarkContainer extends Component {
-    state = initialState;
-    baseState = this.state;
+
+    // componentDidMount() {
+    // }
 
     getUnique = (arr, comp) => {
         const unique = arr
@@ -159,17 +162,29 @@ class FilterSingleMarkContainer extends Component {
     }
 
     clearFilterHandler = () => {
-        console.log('warnongg click');
-        console.warn('warn', this.state)
-        this.setState(this.baseState)
+        // console.log('warnongg click');
+        // console.warn('warn', this.state)
+        // this.setState(this.baseState)
+        this.props.form.resetFields()
+        }
+    
+    showAllParamsHandler = () => {
+        // console.info('ttt', this.state.visibleAllFilter)
+        this.setState({
+            ...this.state,
+            visibleAllFilter: !this.state.visibleAllFilter
+        })
+        // console.info('ttt', this.state.visibleAllFilter)
     }
 
     blurHandlerChange = () => {
-        console.log("blurHandlerChange");
+        // console.log("blurHandlerChange");
     };
 
         render() {
             const { getFieldDecorator } = this.props.form;
+            
+            
             let MainFilds = (
             <Row>
                 <Form
@@ -228,8 +243,8 @@ class FilterSingleMarkContainer extends Component {
                             </Form.Item>
                         </Col>
                     </Row>
-
-                    <Row type="flex">
+                    {this.state.visibleAllFilter ? 
+                    <Row type="flex" >
                         <Row >
                             <Row type="flex">
                                 <Title level={2}>h2. Ant Design</Title>
@@ -238,7 +253,8 @@ class FilterSingleMarkContainer extends Component {
                                 <Col span={8}>
                                     <Form.Item style={{width: '200px'}}>
                                         {getFieldDecorator("ddd", {
-                                        rules: [{ required: false, message: "Please input your note!" }]
+                                            initialValue: this.state.brands.value,
+                                            rules: [{ required: false, message: "Please input your note!" }]
                                         })(
                                         <Select
                                             options={this.state.multimedia.audiosystem.options}
@@ -296,9 +312,6 @@ class FilterSingleMarkContainer extends Component {
                                 </Col>
                             </Row>
                         </Row>
-                    </Row>
-
-                    <Row type="flex">
                         <Row >
                             <Row type="flex">
                                 <Title level={2}>Other</Title>
@@ -327,7 +340,7 @@ class FilterSingleMarkContainer extends Component {
                                 </Col>
                             </Row>
                         </Row>
-                    </Row>
+                    </Row>: null }
                 </Form>
             </Row>
             );
@@ -346,8 +359,9 @@ class FilterSingleMarkContainer extends Component {
                     <Row type="flex">{MainFilds}</Row>
 
                     <Row type="flex" justify="space-between">
+                        
                         <Col>
-                            <Button>All paramns</Button>
+                            <Button onClick={this.showAllParamsHandler}>All paramns</Button>
                             <Button onClick={this.clearFilterHandler}>Clear</Button>
                         </Col>
                         <Col>
@@ -361,8 +375,6 @@ class FilterSingleMarkContainer extends Component {
         }
     }
 
-    const WrappedApp = Form.create({ name: "coordinated" })(
-    FilterSingleMarkContainer
-    );
+const WrappedApp = Form.create({ name: "coordinated" })(FilterSingleMarkContainer);
 
-export default WrappedApp;
+export default withRouter(WrappedApp);

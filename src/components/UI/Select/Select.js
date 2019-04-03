@@ -6,7 +6,7 @@ const Option = Select.Option;
 
 class SelectCs extends Component {
     render() {
-        console.log('select components ',this.props)
+        // console.log('select components ',this.props)
         let options;
     
         if (this.props.options && this.props.options.length > 0) {
